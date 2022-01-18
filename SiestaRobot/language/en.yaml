@@ -248,7 +248,7 @@ blacklist_help: |
 chatbot_help: |
     ──「 Chatbot AI 」──
 
-    Siesta AI is the only ai system which can detect & reply upto 200 language's
+    Ichigo AI is the only ai system which can detect & reply upto 200 language's
 
     ❂ /chatbot [ON/OFF]: Enables and disables AI Chat mode.
     ❂ /chatbot EN : Enables English only chatbot.
@@ -344,7 +344,7 @@ fsub_feds_help: |
 
     *Force Subscribe:*
 
-    Siesta can mute members who are not subscribed your channel until they subscribe When enabled I will mute unsubscribed members and show them a unmute button. When they pressed the button I will unmute them
+    Ichigo can mute members who are not subscribed your channel until they subscribe When enabled I will mute unsubscribed members and show them a unmute button. When they pressed the button I will unmute them
 
     *Setup* *:* *Only creator*
     ❂ Add me in your group as admin
