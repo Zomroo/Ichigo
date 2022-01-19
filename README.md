@@ -1,9 +1,9 @@
 <h2 align="center">
-    ──「 SIESTA ROBOT IS A MODULAR BOT WITH ANIME THEME 」──
+    ──「 ichigo ROBOT IS A MODULAR BOT WITH ANIME THEME 」──
 </h2>
 
 <p align="center">
-  <img src="https://telegra.ph/file/409f1e6c7e44e7023fe26.jpg">
+  <img src="https://telegra.ph/file/a2d6fb3c331463140ab73.jpg">
 </p>
 
 <p align="center">
