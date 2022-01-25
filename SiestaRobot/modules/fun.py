@@ -10,8 +10,11 @@ from SiestaRobot.modules.helper_funcs.extraction import extract_user
 from SiestaRobot.modules.language import gs
 from telegram import ChatPermissions, ParseMode, Update
 from telegram.error import BadRequest
+
 from telegram.ext import CallbackContext
-from SiestaRobot import DRAGONS. DEV_USERS, DEMONS
+
+from SiestaRobot import DRAGONS. DEMONS
+
 GIF_ID = "CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr5nGxsE"
 
 
