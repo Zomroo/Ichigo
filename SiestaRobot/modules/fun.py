@@ -319,6 +319,7 @@ def weebify(update: Update, context: CallbackContext):
 def helps(chat):
     return gs(chat, "fun_help")
 
+
 def gbam(update, context):
     user = update.effective_user
     chat = update.effective_chat
@@ -340,11 +341,10 @@ def gbam(update, context):
     if update.effective_message.chat.type == "private":
         return
     if int(user.id) in DRAGONS or int(user.id) in DEMONS:
-        gbamm = fun.GBAM
-        reason = random.choice(fun.GBAM_REASON)
+        gbamm = fun_strings.GBAM
+        reason = random.choice(fun_strings.GBAM_REASON)
         gbam = gbamm.format(user1=user1, user2=user2, chatid=chat.id, reason=reason)
         context.bot.sendMessage(chat.id, gbam, parse_mode=ParseMode.HTML)
-
 
 
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize, run_async=True)
