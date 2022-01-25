@@ -30,15 +30,15 @@ MEMEK = "https://telegra.ph/file/a40cf9d53fa682d957b0b.jpg"
 async def repo(_, message):
     await message.reply_photo(
         photo=MEMEK,
-        caption=f"""✨ **Hey I'm ichigo Robot** ✨ 
+        caption=f"""× **Hᴏɪ I'ᴍ ɪᴄʜɪɢᴏ ʀᴏʙᴏᴛ !** 
 
-**Owner repo : [Asta](https://t.me/baby_hoi)**
-**Python Version :** `{y()}`
-**Library Version :** `{o}`
-**Telethon Version :** `{s}`
-**Pyrogram Version :** `{z}`
+**× ʀᴇᴘᴏ ᴏᴡɴᴇʀ : [Asᴛᴀ](https://t.me/baby_hoi)**
+**× Pʏᴛʜᴏɴ Vᴇʀsɪᴏɴ :** `{y()}`
+**× Lɪʙʀᴀʀʏ Vᴇʀsɪᴏɴ :** `{o}`
+**× Tᴇʟᴇᴛʜᴏɴ Vᴇʀsɪᴏɴ :** `{s}`
+**× Pʏʀᴏɢʀᴀᴍ Vᴇʀsɪᴏɴ :** `{z}`
 
-**If you want my repo contact my darling or brother.**
+**× Iғ ʏᴏᴜ ᴡᴀɴᴛ ᴍʏ ʀᴇᴘᴏ ᴄᴏɴᴛᴀᴄᴛ ᴍʏ ᴅᴀʀʟɪɴɢ ᴏʀ ʙʀᴏᴛʜᴇʀ.**
 """,
         reply_markup=InlineKeyboardMarkup(
             [
