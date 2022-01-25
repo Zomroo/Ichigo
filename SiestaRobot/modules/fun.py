@@ -316,6 +316,34 @@ def weebify(update: Update, context: CallbackContext):
 def helps(chat):
     return gs(chat, "fun_help")
 
+def gbam(update, context):
+    user = update.effective_user
+    chat = update.effective_chat
+    bot, args = context.bot, context.args
+    message = update.effective_message
+
+    curr_user = html.escape(message.from_user.first_name)
+    user_id = extract_user(message, args)
+
+    if user_id:
+        gbam_user = bot.get_chat(user_id)
+        user1 = curr_user
+        user2 = html.escape(gbam_user.first_name)
+
+    else:
+        user1 = curr_user
+        user2 = bot.first_name
+
+    if update.effective_message.chat.type == "private":
+        return
+    if int(user.id) in DRAGONS or int(user.id) in DEMONS:
+        gbamm = fun.GBAM
+        reason = random.choice(fun.GBAM_REASON)
+        gbam = gbamm.format(user1=user1, user2=user2, chatid=chat.id, reason=reason)
+        context.bot.sendMessage(chat.id, gbam, parse_mode=ParseMode.HTML)
+
+
+
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize, run_async=True)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs, run_async=True)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap, run_async=True)
@@ -330,6 +358,7 @@ EIGHTBALL_HANDLER = DisableAbleCommandHandler("8ball", eightball, run_async=True
 TABLE_HANDLER = DisableAbleCommandHandler("table", table, run_async=True)
 SHOUT_HANDLER = DisableAbleCommandHandler("shout", shout, run_async=True)
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify, run_async=True)
+GBAM_HANDLER = DisableAbleCommandHandler("gbam", gbam, run_async=True)
 
 dispatcher.add_handler(WEEBIFY_HANDLER)
 dispatcher.add_handler(SHOUT_HANDLER)
@@ -345,6 +374,7 @@ dispatcher.add_handler(RLG_HANDLER)
 dispatcher.add_handler(DECIDE_HANDLER)
 dispatcher.add_handler(EIGHTBALL_HANDLER)
 dispatcher.add_handler(TABLE_HANDLER)
+dispatcher.add_handler(GBAM_HANDLER)
 
 __mod_name__ = "Fun"
 __command_list__ = [
@@ -378,4 +408,5 @@ __handlers__ = [
     SHOUT_HANDLER,
     WEEBIFY_HANDLER,
     EIGHTBALL_HANDLER,
+    GBAM_HANDLER,
 ]
