@@ -11,7 +11,7 @@ from SiestaRobot.modules.language import gs
 from telegram import ChatPermissions, ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext
-
+from SiestaRobot import DRAGONS. DEV_USERS, DEMONS
 GIF_ID = "CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr5nGxsE"
 
 
@@ -391,6 +391,7 @@ __command_list__ = [
     "sanitize",
     "shout",
     "weebify",
+    "gbam",
     "8ball",
 ]
 __handlers__ = [
