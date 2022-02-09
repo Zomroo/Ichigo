@@ -79,11 +79,11 @@ def kuki(update: Update, context: CallbackContext):
     msg = "Choose an option"
     keyboard = InlineKeyboardMarkup([[
         InlineKeyboardButton(
-            text="Enable",
+            text="on",
             callback_data="add_chat({})")],
        [
         InlineKeyboardButton(
-            text="Disable",
+            text="off",
             callback_data="rm_chat({})")]])
     message.reply_text(
         msg,
