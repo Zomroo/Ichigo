@@ -15,7 +15,7 @@ PHOTO = "https://telegra.ph/file/b751d04992f220d8efbcb.jpg"
 async def awake(event):
   TEXT = f"**Hɪ [{event.sender.first_name}](tg://user?id={event.sender.id}), I'ᴍ ɪᴄʜɪɢᴏ.** \n\n"
   TEXT += "× **I'ᴍ Wᴏʀᴋɪɴɢ Pʀᴏᴘᴇʀʟʏ** \n\n"
-  TEXT += f"× **Mʏ ᴅᴀʀʟɪɴɢ : [Asᴛᴀ](https://t.me/baby_hoi)** \n\n"
+  TEXT += f"× **Mʏ ᴅᴀʀʟɪɴɢ : [Haruki](https://t.me/baby_hoii)** \n\n"
   TEXT += f"× **Lɪʙʀᴀʀʏ Vᴇʀsɪᴏɴ  :** `{telever}` \n\n"
   TEXT += f"× **Tᴇʟᴇᴛʜᴏɴ Vᴇʀsɪᴏɴ :** `{tlhver}` \n\n"
   TEXT += f"× **Pʏʀᴏɢʀᴀᴍ Vᴇʀsɪᴏɴ :** `{pyrover}` \n\n"
