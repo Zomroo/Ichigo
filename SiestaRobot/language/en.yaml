@@ -1,7 +1,7 @@
 # Language name in their native
 language: "English 🇬🇧"
 # name of people(s) who worked on this translation
-authors: "@baby_hoi"
+authors: "@baby_hoii"
 
 # languages
 curr_chat_lang: "Hey. Your current language is {}, select the one you want from the buttons below :)"
@@ -82,15 +82,15 @@ group_settings_text: "Click here to get this chat's settings, as well as yours."
 group_settings_button: "Settings"
 
 # PM Button
-add_bot_to_group_button: "♕ Add ichigo To Your Group ♕"
+add_bot_to_group_button: "× sᴜᴍᴍᴏɴ ɪᴄʜɪɢᴏ ×"
 support_chat_link_button: "Support"
 updates_channel_link_button: "Update"
 notes_button: "Notes"
-source_button: "baka contact @baby_hoi"
-help_button: "Get Help"
+source_button: "baka contact @baby_hoii"
+help_button: "× ᴜᴡᴜ ʜᴇʟᴘ ×"
 back_button: "Go back"
-about_button: "About Ichigo Robot"
-inline_button: "Try inline!​​"
+about_button: "× ᴀʙᴏᴜᴛ ɪᴄʜɪɢᴏ ×"
+inline_button: "× ᴛʀʏ ɪɴʟɪɴᴇ ×​​"
 
 # MODULES
 admin_help: |
