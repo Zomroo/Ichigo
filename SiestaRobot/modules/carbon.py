@@ -32,7 +32,7 @@ async def repo(_, message):
         photo=MEMEK,
         caption=f"""× **Hᴏɪ I'ᴍ ɪᴄʜɪɢᴏ ʀᴏʙᴏᴛ !** 
 
-**× ʀᴇᴘᴏ ᴏᴡɴᴇʀ : [Asᴛᴀ](https://t.me/baby_hoi)**
+**× ʀᴇᴘᴏ ᴏᴡɴᴇʀ : [Haruki](https://t.me/baby_hoii)**
 **× Pʏᴛʜᴏɴ Vᴇʀsɪᴏɴ :** `{y()}`
 **× Lɪʙʀᴀʀʏ Vᴇʀsɪᴏɴ :** `{o}`
 **× Tᴇʟᴇᴛʜᴏɴ Vᴇʀsɪᴏɴ :** `{s}`
@@ -44,7 +44,7 @@ async def repo(_, message):
             [
                 [
                     InlineKeyboardButton(
-                        "Darling", url="https://t.me/baby_hoi"), 
+                        "Darling", url="https://t.me/baby_hoii"), 
                     InlineKeyboardButton(
                         "Brother", url="https://t.me/Aceladi")
                 ]
