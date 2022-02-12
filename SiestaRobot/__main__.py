@@ -226,10 +226,10 @@ def start(update: Update, context: CallbackContext):
                 disable_web_page_preview=False,
             )
     else:
-        KOMISTART = "https://telegra.ph/file/4f09e7b55007d26db8efc.jpg"
+        KOMISTART = "https://telegra.ph/file/022599d6bf845bc8c064f.mp4"
         first_name = update.effective_user.first_name
         update.effective_message.reply_video(
-           KOMISTART, caption= "<b>Hello {}, I am Shouko komi!. I wanna make as many as friends possible\n will you be my friend ? \nHaven't sleep since</b>: <code>{}</code>".format(
+           KOMISTART, caption= "<b>𝙺𝚘𝚗'𝚗𝚒𝚌𝚑𝚒𝚠𝚊 {} 𝚋𝚊𝚔𝚊, 𝙸'𝚖 𝚒𝚌𝚑𝚒𝚐𝚘!!. 𝙷𝚘𝚠 𝚊𝚛𝚎 𝚢𝚘𝚞  ?\n will you be my friend ? \n𝙰𝚕𝚒𝚟𝚎 𝚜𝚒𝚗𝚌𝚎 since</b>: <code>{}</code>".format(
                 escape_markdown(first_name),
                 uptime
             ),
@@ -238,15 +238,15 @@ def start(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="「SUPPORT」",
+                            text="× SUPPORT ×",
                             url=f"https://telegram.dog/{SUPPORT_CHAT}",
                         ),
                         InlineKeyboardButton(
-                            text="「UPDATES」",
-                            url="https://telegram.dog/komisanupdates",
+                            text="× UPDATES ×",
+                            url="https://telegram.dog/IchigoBotsupport",
                         ),
                         InlineKeyboardButton(
-                          text="「HELP」", url=f"https://t.me/komiXrobot?start=help"
+                          text="× HELP ×", url=f"https://t.me/ichigoxsinbot?start=help"
                         ),  
                     ]
                 ]
