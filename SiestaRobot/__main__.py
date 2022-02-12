@@ -226,6 +226,7 @@ def start(update: Update, context: CallbackContext):
                 disable_web_page_preview=False,
             )
     else:
+        KOMISTART = "https://telegra.ph/file/4f09e7b55007d26db8efc.jpg"
         first_name = update.effective_user.first_name
         update.effective_message.reply_video(
            KOMISTART, caption= "<b>Hello {}, I am Shouko komi!. I wanna make as many as friends possible\n will you be my friend ? \nHaven't sleep since</b>: <code>{}</code>".format(
