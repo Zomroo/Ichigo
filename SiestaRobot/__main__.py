@@ -836,7 +836,7 @@ def main():
         try:
             dispatcher.bot.sendMessage(
                 f"@{SUPPORT_CHAT}", 
-                f"""**Yes Darling ❤️, i am activated!**""",
+                f"""**× https://telegra.ph/file/7ddb37c1f468575a4f653.mp4 × Uwu I'm back to protect you!!**""",
                 parse_mode=ParseMode.MARKDOWN
             )
         except Unauthorized:
