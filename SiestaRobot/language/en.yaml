@@ -812,16 +812,16 @@ pin_button: "👉 Go to message"
 
 # Afk.py Variabel
 reason_len: "\nYour afk reason was shortened to 100 characters."
-afk: "{} is now away! {}"
-afk_array1: "{} is here!"
-afk_array2: "{} is back!"
+afk: "{} uwu let me rest a while says the phone! {}"
+afk_array1: "{} is here to create mess!"
+afk_array2: "{} is back with a big bang!"
 afk_array3: "{} is now in the chat!"
-afk_array4: "{} is awake!"
-afk_array5: "{} is back online!"
-afk_array6: "{} is finally here!"
+afk_array4: "{} san uwu welcome back!"
+afk_array5: "{} is back online to ruin the chat!"
+afk_array6: "{} was busy with their partner!"
 afk_array7: "Welcome back! {}"
 afk_array8: "Where is {}?\nIn the chat!"
-afk_check: "{} is afk"
+afk_check: "{} is away from phone the chat is safe now"
 afk_check_reason: "{} is afk.\nReason: <code>{}</code>"
 
 # Antichannel.py Variabel
