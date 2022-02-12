@@ -101,7 +101,7 @@ async def inline_help_func(__HELP__):
             input_message_content=InputTextMessageContent(
                 "**__Click A Button To Get Started.__**"
             ),
-            thumb_url="https://telegra.ph/file/5755d25e718851cdecacb.jpg",
+            thumb_url="https://telegra.ph/file/2545e9a711e3d49a19b86.jpg",
             reply_markup=buttons,
         ),
     ]
@@ -121,14 +121,14 @@ async def alive_function(answers):
     )
 
     msg = f"""
-**[Siesta Robot ❤️](https://t.me/machinaxsupport):**
+**[Ichigo robot ](https://t.me/ichigosupportchat):**
 **MainBot:** `{bot_state}`
 **UserBot:** `{ubot_state}`
 **Python:** `{pyver.split()[0]}`
 **Pyrogram:** `{pyrover}`
 **MongoDB:** `{mongover}`
 **Platform:** `{sys.platform}`
-**Profiles:** [BOT](t.me/{BOT_USERNAME}) | [OWNER BOT](t.me/saint_foire)
+**Profiles:** [BOT](t.me/{BOT_USERNAME}) | [OWNER BOT](t.me/baby_hoii)
 """
     answers.append(
         InlineQueryResultArticle(
