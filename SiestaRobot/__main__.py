@@ -238,15 +238,15 @@ def start(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="× SUPPORT ×",
+                            text="SUPPORT",
                             url=f"https://telegram.dog/{SUPPORT_CHAT}",
                         ),
                         InlineKeyboardButton(
-                            text="× UPDATES ×",
+                            text="UPDATES",
                             url="https://telegram.dog/IchigoBotsupport",
                         ),
                         InlineKeyboardButton(
-                          text="× HELP ×", url=f"https://t.me/ichigoxsinbot?start=help"
+                          text="HELP", url=f"https://t.me/ichigoxsinbot?start=help"
                         ),  
                     ]
                 ]
