@@ -226,13 +226,31 @@ def start(update: Update, context: CallbackContext):
                 disable_web_page_preview=False,
             )
     else:
-        update.effective_message.reply_text(
-            text=gs(chat.id, "group_start_text").format(
-                escape_markdown(uptime),
-                ),
-            parse_mode=ParseMode.MARKDOWN
-       )
-
+        first_name = update.effective_user.first_name
+        update.effective_message.reply_video(
+           KOMISTART, caption= "<b>Hello {}, I am Shouko komi!. I wanna make as many as friends possible\n will you be my friend ? \nHaven't sleep since</b>: <code>{}</code>".format(
+                escape_markdown(first_name),
+                uptime
+            ),
+            parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            text="「SUPPORT」",
+                            url=f"https://telegram.dog/{SUPPORT_CHAT}",
+                        ),
+                        InlineKeyboardButton(
+                            text="「UPDATES」",
+                            url="https://telegram.dog/komisanupdates",
+                        ),
+                        InlineKeyboardButton(
+                          text="「HELP」", url=f"https://t.me/komiXrobot?start=help"
+                        ),  
+                    ]
+                ]
+            ),
+        )
 
 def error_handler(update, context):
     """Log the error and send a telegram message to notify the developer."""
