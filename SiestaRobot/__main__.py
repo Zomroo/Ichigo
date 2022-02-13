@@ -226,7 +226,7 @@ def start(update: Update, context: CallbackContext):
                 disable_web_page_preview=False,
             )
     else:
-        KOMISTART = "https://telegra.ph/file/d97c2c02f1b49ccfe6237.mp4"
+        KOMISTART = "https://telegra.ph/file/54bb8daa8292316e7e75d.mp4"
         first_name = update.effective_user.first_name
         update.effective_message.reply_video(
            KOMISTART, caption= "<b>𝙺𝚘𝚗'𝚗𝚒𝚌𝚑𝚒𝚠𝚊 {} 𝚋𝚊𝚔𝚊, 𝙸'𝚖 𝚒𝚌𝚑𝚒𝚐𝚘!!. 𝙷𝚘𝚠 𝚊𝚛𝚎 𝚢𝚘𝚞  ?\n will you be my friend ? \n𝙰𝚕𝚒𝚟𝚎 𝚜𝚒𝚗𝚌𝚎 since</b>: <code>{}</code>".format(
@@ -238,15 +238,15 @@ def start(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="SUPPORT",
+                            text="Sᴜᴘᴘᴏʀᴛ",
                             url=f"https://telegram.dog/{SUPPORT_CHAT}",
                         ),
                         InlineKeyboardButton(
-                            text="UPDATES",
-                            url="https://telegram.dog/IchigoBotsupport",
+                            text="Dᴀʀʟɪɴɢ",
+                            url="https://t.me/baby_hoii",
                         ),
                         InlineKeyboardButton(
-                          text="HELP", url=f"https://t.me/ichigoxsinbot?start=help"
+                          text="ʜᴇʟᴘ", url=f"https://t.me/ichigoxsinbot?start=help"
                         ),  
                     ]
                 ]
