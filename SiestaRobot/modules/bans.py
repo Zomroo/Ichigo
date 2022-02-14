@@ -77,7 +77,7 @@ def ban(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("⚠️ User not found.")
+        message.reply_text("sorry baka im unable to find the user.")
         return log_message
     try:
         member = chat.get_member(user_id)
@@ -87,30 +87,30 @@ def ban(update: Update, context: CallbackContext) -> str:
         message.reply_text("Can't seem to find this person.")
         return log_message
     if user_id == bot.id:
-        message.reply_text("Oh yeah, ban myself, noob!")
+        message.reply_text("Oh yeah, ban your Darling, noob!")
         return log_message
 
     if is_user_ban_protected(chat, user_id, member) and user not in DEV_USERS:
         if user_id == OWNER_ID:
-            message.reply_text("Trying to put me against a King huh?")
+            message.reply_text("Trying to put me against my Darling huh?")
         elif user_id in DEV_USERS:
-            message.reply_text("I can't act against our Prince.")
+            message.reply_text("I can't act against my oni chan.")
         elif user_id in DRAGONS:
             message.reply_text(
-                "Fighting this Emperor here will put user lives at risk."
+                "Whoa baka this user is my senpai , wanna die ?."
             )
         elif user_id in DEMONS:
             message.reply_text(
-                "Bring an order from Captain to fight a Assasin servant."
+                "This user is my caretaker bruh!."
             )
         elif user_id in TIGERS:
             message.reply_text(
-                "Bring an order from Soldier to fight a Lancer servant."
+                "Oi this user is my classmate."
             )
         elif user_id in WOLVES:
-            message.reply_text("Trader access make them ban immune!")
+            message.reply_text("I won't let you ban my friend!")
         else:
-            message.reply_text("⚠️ Cannot banned admin.")
+            message.reply_text("baka I told you a million times I can't ban an admin.")
         return log_message
     if message.text.startswith("/s"):
         silent = True
@@ -196,7 +196,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("⚠️ User not found.")
+        message.reply_text("eh the user is out of my reach.")
         return log_message
 
     try:
@@ -306,7 +306,7 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
             if not is_user_admin(chat, int(user.id)):
                 bot.answer_callback_query(
                     query.id,
-                    text="⚠️ You don't have enough rights to unmute people",
+                    text="ops brat You don't have enough rights to unmute people",
                     show_alert=True,
                 )
                 return ""
@@ -331,7 +331,7 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
         if not is_user_admin(chat, int(user.id)):
             bot.answer_callback_query(
                 query.id,
-                text="⚠️ You don't have enough rights to delete this message.",
+                text="ops baka You don't have enough rights to delete this message.",
                 show_alert=True,
             )
             return ""
@@ -355,7 +355,7 @@ def punch(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("⚠️ User not found")
+        message.reply_text("the user is not found")
         return log_message
 
     try:
@@ -364,14 +364,14 @@ def punch(update: Update, context: CallbackContext) -> str:
         if excp.message != "User not found":
             raise
 
-        message.reply_text("⚠️ I can't seem to find this user.")
+        message.reply_text(" I can't seem to find this user.")
         return log_message
     if user_id == bot.id:
-        message.reply_text("Yeahhh I'm not gonna do that.")
+        message.reply_text("Yeahhh I'm not gonna do that brat.")
         return log_message
 
     if is_user_ban_protected(chat, user_id):
-        message.reply_text("I really wish I could punch this user....")
+        message.reply_text("ah baka I badly wanna punch this user....")
         return log_message
 
     res = chat.unban_member(user_id)  # unban on current user = kick
@@ -394,7 +394,7 @@ def punch(update: Update, context: CallbackContext) -> str:
         return log
 
     else:
-        message.reply_text("⚠️ Well damn, I can't punch that user.")
+        message.reply_text(" Well damn, I can't punch that user.")
 
     return log_message
 
@@ -444,7 +444,7 @@ def unban(update: Update, context: CallbackContext) -> Optional[str]:
 
     user_id, reason = extract_user_and_text(message, args)
     if not user_id:
-        message.reply_text("⚠️ User not found.")
+        message.reply_text("Ops User not found.")
         return log_message
 
     try:
@@ -459,7 +459,7 @@ def unban(update: Update, context: CallbackContext) -> Optional[str]:
         return log_message
 
     if is_user_in_chat(chat, user_id):
-        message.reply_text(f"⚠️ User not found.")
+        message.reply_text(f"ah demn User not found.")
         return log_message
 
     chat.unban_member(user_id)
@@ -512,7 +512,7 @@ def selfunban(update: Update, context: CallbackContext) -> str:
         return
 
     chat.unban_member(user.id)
-    message.reply_text(f"Yep, I have unbanned The user.")
+    message.reply_text(f"Yep baka, I have unbanned The user.")
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
@@ -531,7 +531,7 @@ def banme(update: Update, context: CallbackContext):
     chat = update.effective_chat
     user = update.effective_user
     if is_user_admin(update.effective_chat, user_id):
-        update.effective_message.reply_text("⚠️ I cannot banned admin.")
+        update.effective_message.reply_text("I cannot banned admin.")
         return
 
     res = update.effective_chat.ban_member(user_id)
