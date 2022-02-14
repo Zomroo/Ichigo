@@ -21,7 +21,7 @@ async def lastname(steal):
     if message.sender.bot:
         await puki.edit("```Reply To Real User's Message.```")
         return
-    await puki.edit("```Please wait...```")
+    await puki.edit("```uwu Baka Please wait...```")
     try:
         async with ubot.conversation(chat) as conv:
             try:
