@@ -356,9 +356,9 @@ def info(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                "Updates", url="https://t.me/ichigo_updates),
+                                "Health", url="https://t.me/KennedyProject/44"),
                             InlineKeyboardButton(
-                                "support", url="https://t.me/ichigosupportchat)
+                                "Disaster", url="https://t.me/KennedyProject/43")
                         ],
                     ]
                 ),
@@ -374,9 +374,9 @@ def info(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                "updates", url="https://t.me/ichigo_updates),
+                                "Health", url="https://t.me/KennedyProject/44"),
                             InlineKeyboardButton(
-                                "Support", url="https://t.me/ichigosupportchat)
+                                "Disaster", url="https://t.me/KennedyProject/43")
                         ],
                     ]
                 ),
