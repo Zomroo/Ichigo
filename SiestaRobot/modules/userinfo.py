@@ -444,7 +444,7 @@ def set_about_me(update: Update, context: CallbackContext):
                 ),
             )
 
-@sudo plus 
+@sudo_plus 
 def stats(update: Update, context: CallbackContext):
     stats = "<b>╔═━「ichigo san stats 」</b>\n" + "\n".join([mod.stats() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
