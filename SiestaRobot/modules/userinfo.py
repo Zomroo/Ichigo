@@ -444,39 +444,16 @@ def set_about_me(update: Update, context: CallbackContext):
                 ),
             )
 
-@run_async
-@sudo_plus
-def stats(update, context):
-    uptime = datetime.datetime.fromtimestamp(boot_time()).strftime("%Y-%m-%d %H:%M:%S")
-    status = "*╒═══「 System statistics 」*\n\n"
-    status += "*➢ Python Version:* " + python_version() + "\n"
-    status += "*➢ python-Telegram-Bot:* " + str(ptbversion) + "\n"
-    status += "*➢ Uptime:* " + get_readable_time((time.time()-StartTime)) + "\n"
-    try:
-        update.effective_message.reply_text(
-            status
-            + "\n*Bot statistics*:\n"
-            + "\n".join([mod.stats() for mod in STATS])
-            + f"\n\n[✦ Support](https://t.me/{SUPPORT_CHAT}) | [✦ Updates](https://t.me/sakuraxupdates)\n\n"
-            + "╘══「 by [haruki](https://t.me/baby_hoii) 」\n",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-        )
-    except BaseException:
-        update.effective_message.reply_text(
-            (
-                (
-                    (
-                        "\n*Bot statistics*:\n"
-                        + "\n".join(mod.stats() for mod in STATS)
-                    )
-                    + f"\n\n✦ [Support](https://t.me/{SUPPORT_CHAT}) | ✦ [Updates](https://t.me/ichigoxupdates)\n\n"
-                )
-                + "╘══「 by [haruki](https://t.me/baby_hoii) 」\n"
-            ),
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-        )
+@sudo plus 
+def stats(update: Update, context: CallbackContext):
+    stats = "<b>╔═━「ichigo san stats 」</b>\n" + "\n".join([mod.stats() for mod in STATS])
+    result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
+    result += "\n<b>╘═━「 Network - × bonten ×」</b>"
+    update.effective_message.reply_text(
+        result,
+        parse_mode=ParseMode.HTML, 
+        disable_web_page_preview=True
+   )
         
         
 def about_bio(update: Update, context: CallbackContext):
