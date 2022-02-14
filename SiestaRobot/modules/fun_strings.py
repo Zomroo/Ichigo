@@ -437,7 +437,7 @@ EIGHTBALL = [
     "🟢 You may rely on it.",
 ]
 
-DECIDE = ("Yes.", "No.", "Maybe.")
+DECIDE = ("Yup.", "Nah.", "You got no sense for decisions, so asking me ! Nah I'm not interested.")
 
 TABLE = (
     "(╯°□°）╯彡 ┻━┻",
