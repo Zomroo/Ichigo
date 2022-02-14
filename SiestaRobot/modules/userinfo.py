@@ -168,7 +168,7 @@ def get_id(update: Update, context: CallbackContext):
             )
 
 
-@FlareTelethonClient.on(
+@SiestaRobotClient.on(
     events.NewMessage(
         pattern="/ginfo ", from_users=(TIGERS or []) + (DRAGONS or []) + (DEMONS or []),
     ),
