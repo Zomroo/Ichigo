@@ -72,16 +72,16 @@ def addsudo(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in DRAGONS:
-        message.reply_text("This member is already a  sage ")
+        message.reply_text("This user is already my senpai ")
         return ""
 
     if user_id in DEMONS:
-        rt += "Succesfully raised Captain to sage ."
+        rt += "Succesfully raised to my caretakers."
         data["supports"].remove(user_id)
         DEMONS.remove(user_id)
 
     if user_id in WOLVES:
-        rt += "Succesfully raised Soldier to sage ."
+        rt += "Succesfully raised to my friends."
         data["whitelists"].remove(user_id)
         WOLVES.remove(user_id)
 
@@ -93,7 +93,7 @@ def addsudo(update: Update, context: CallbackContext) -> str:
 
     update.effective_message.reply_text(
         rt
-        + "\nSuccessfully raised {} to sage !".format(
+        + "\nSuccessfully added {} as my oni chan !".format(
             user_member.first_name,
         ),
     )
@@ -133,16 +133,16 @@ def addsupport(
         data = json.load(infile)
 
     if user_id in DRAGONS:
-        rt += "Demote this sage to franxx"
+        rt += "Darling told me to stay away from strangers"
         data["sudos"].remove(user_id)
         DRAGONS.remove(user_id)
 
     if user_id in DEMONS:
-        message.reply_text("This user is already franxx.")
+        message.reply_text("This user is already amomg my caretakers.")
         return ""
 
     if user_id in WOLVES:
-        rt += "Succesfully raised Soldier to franxx"
+        rt += "Succesfully raised to my friends"
         data["whitelists"].remove(user_id)
         WOLVES.remove(user_id)
 
@@ -153,7 +153,7 @@ def addsupport(
         json.dump(data, outfile, indent=4)
 
     update.effective_message.reply_text(
-        rt + f"\n{user_member.first_name} was added as a franxx!",
+        rt + f"\n{user_member.first_name} was added to my friends!",
     )
 
     log_message = (
@@ -188,17 +188,17 @@ def addwhitelist(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in DRAGONS:
-        rt += "This member is a sage, Demoting to Soldier."
+        rt += "Darling told me to stay away from strangers."
         data["sudos"].remove(user_id)
         DRAGONS.remove(user_id)
 
     if user_id in DEMONS:
-        rt += "This user is already a franxx, Demoting to staff."
+        rt += "Darling told me to stay away from strangers."
         data["supports"].remove(user_id)
         DEMONS.remove(user_id)
 
     if user_id in WOLVES:
-        message.reply_text("This user is already in staff.")
+        message.reply_text("This user is already my friend.")
         return ""
 
     data["whitelists"].append(user_id)
@@ -208,7 +208,7 @@ def addwhitelist(update: Update, context: CallbackContext) -> str:
         json.dump(data, outfile, indent=4)
 
     update.effective_message.reply_text(
-        rt + f"\nSuccessfully raised {user_member.first_name} to be a Soldier!",
+        rt + f"\nSuccessfully raised {user_member.first_name} as my friend!",
     )
 
     log_message = (
@@ -243,22 +243,22 @@ def addtiger(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in DRAGONS:
-        rt += "This member is a sage, Demoting to Trader."
+        rt += "Darling told me to stay away from strangers."
         data["sudos"].remove(user_id)
         DRAGONS.remove(user_id)
 
     if user_id in DEMONS:
-        rt += "This user is already a franxx, Demoting to Trader."
+        rt += "Darling told me to stay away from strangers."
         data["supports"].remove(user_id)
         DEMONS.remove(user_id)
 
     if user_id in WOLVES:
-        rt += "This user is already a staff, Demoting to Lieutenant."
+        rt += "Darling told me to stay away from strangers."
         data["whitelists"].remove(user_id)
         WOLVES.remove(user_id)
 
     if user_id in TIGERS:
-        message.reply_text("This user is already a Lieutenant.")
+        message.reply_text("This user is already my classmate.")
         return ""
 
     data["tigers"].append(user_id)
@@ -268,7 +268,7 @@ def addtiger(update: Update, context: CallbackContext) -> str:
         json.dump(data, outfile, indent=4)
 
     update.effective_message.reply_text(
-        rt + f"\nSuccessfully give a money to {user_member.first_name} for to be a Trader!",
+        rt + f"\nuwu congo {user_member.first_name} is my new classmate!",
     )
 
     log_message = (
