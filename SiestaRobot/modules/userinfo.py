@@ -12,7 +12,7 @@ from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.types import ChannelParticipantsAdmins
 from telethon import events
 
-from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update, MessageEntity, __version__ as ptbver, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update, MessageEntity, version as ptbver, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CallbackContext, CommandHandler
 from telegram.ext.dispatcher import run_async
 from telegram.error import BadRequest
@@ -32,7 +32,7 @@ from SiestaRobot import (
     StartTime,
     SUPPORT_CHAT,
 )
-from SiestaRobot.__main__ import STATS, TOKEN, USER_INFO
+from SiestaRobot.main import STATS, TOKEN, USER_INFO
 from SiestaRobot.modules.sql import SESSION
 import SiestaRobot.modules.sql.userinfo_sql as sql
 from SiestaRobot.modules.disable import DisableAbleCommandHandler
@@ -45,7 +45,7 @@ from SiestaRobot import telethn
 
 def no_by_per(totalhp, percentage):
     """
-    rtype: num of `percentage` from total
+    rtype: num of percentage from total
     eg: 1000, 10 -> 10% of 1000 (100)
     """
     return totalhp * percentage / 100
@@ -53,7 +53,7 @@ def no_by_per(totalhp, percentage):
 
 def get_percentage(totalhp, earnedhp):
     """
-    rtype: percentage of `totalhp` num
+    rtype: percentage of totalhp num
     eg: (1000, 100) will return 10%
     """
 
@@ -91,7 +91,7 @@ def hpmanager(user):
 
     if not is_user_gbanned(user.id):
 
-        # Assign new var `new_hp` since we need `total_hp` in
+        # Assign new var new_hp since we need total_hp in
         # end to calculate percentage.
         new_hp = total_hp
 
@@ -123,7 +123,7 @@ def hpmanager(user):
     else:
         new_hp = no_by_per(total_hp, 5)
 
-    return {
+return {
         "earnedhp": int(new_hp),
         "totalhp": int(total_hp),
         "percentage": get_percentage(total_hp, new_hp),
@@ -195,23 +195,23 @@ async def group_info(event) -> None:
             "Can't for some reason, maybe it is a private one or that I am banned there.",
         )
         return
-    msg = f"**ID**: `{entity.id}`"
-    msg += f"\n**Title**: `{entity.title}`"
-    msg += f"\n**Datacenter**: `{entity.photo.dc_id}`"
-    msg += f"\n**Video PFP**: `{entity.photo.has_video}`"
-    msg += f"\n**Supergroup**: `{entity.megagroup}`"
-    msg += f"\n**Restricted**: `{entity.restricted}`"
-    msg += f"\n**Scam**: `{entity.scam}`"
-    msg += f"\n**Slowmode**: `{entity.slowmode_enabled}`"
+    msg = f"ID: {entity.id}"
+    msg += f"\nTitle: {entity.title}"
+    msg += f"\nDatacenter: {entity.photo.dc_id}"
+    msg += f"\nVideo PFP: {entity.photo.has_video}"
+    msg += f"\nSupergroup: {entity.megagroup}"
+    msg += f"\nRestricted: {entity.restricted}"
+    msg += f"\nScam: {entity.scam}"
+    msg += f"\nSlowmode: {entity.slowmode_enabled}"
     if entity.username:
-        msg += f"\n**Username**: {entity.username}"
-    msg += "\n\n**Member Stats:**"
-    msg += f"\n`Admins:` `{len(totallist)}`"
-    msg += f"\n`Users`: `{totallist.total}`"
-    msg += "\n\n**Admins List:**"
+        msg += f"\nUsername: {entity.username}"
+    msg += "\n\nMember Stats:"
+    msg += f"\nAdmins: {len(totallist)}"
+    msg += f"\nUsers: {totallist.total}"
+    msg += "\n\nAdmins List:"
     for x in totallist:
         msg += f"\n• [{x.id}](tg://user?id={x.id})"
-    msg += f"\n\n**Description**:\n`{ch_full.full_chat.about}`"
+    msg += f"\n\nDescription:\n{ch_full.full_chat.about}"
     await event.reply(msg)
 
 
@@ -251,10 +251,10 @@ def info(update: Update, context: CallbackContext):
         message.reply_text("I can't extract a user from this.")
         return
 
-    else:
+else:
         return
 
-    rep = message.reply_text("<code>Getting info...</code>", parse_mode=ParseMode.HTML)
+    rep = message.reply_text("<code>Contacting Sydexas For Info.....</code>", parse_mode=ParseMode.HTML)
 
     text = (
         f"╔═━「<b> Appraisal results:</b> 」\n"
@@ -301,22 +301,22 @@ def info(update: Update, context: CallbackContext):
     disaster_level_present = False
 
     if user.id == OWNER_ID:
-        text += "\n\nThe Disaster level of this person is 'King'."
+        text += "\n\nThe Disaster level of this person is 'ᴜᴘᴘᴇʀ ᴍᴏᴏɴ 1'."
         disaster_level_present = True
     elif user.id in DEV_USERS:
-        text += "\n\nThis user is member of 'Prince'."
+        text += "\n\nThis user is member of 'ᴜᴘᴘᴇʀ ᴍᴏᴏɴs'."
         disaster_level_present = True
     elif user.id in DRAGONS:
-        text += "\n\nThe Disaster level of this person is 'Emperor'."
+        text += "\n\nThe Disaster level of this person is 'ʟᴏᴡᴇʀ ᴍᴏᴏɴs'."
         disaster_level_present = True
     elif user.id in DEMONS:
-        text += "\n\nThe Disaster level of this person is 'Governor'."
+        text += "\n\nThe Disaster level of this person is 'Xʟᴏᴡᴇʀᴍᴏᴏɴs'."
         disaster_level_present = True
     elif user.id in TIGERS:
-        text += "\n\nThe Disaster level of this person is 'Captain'."
+        text += "\n\nThe Disaster level of this person is 'ᴅᴇᴍᴏɴs'."
         disaster_level_present = True
     elif user.id in WOLVES:
-        text += "\n\nThe Disaster level of this person is 'Soldier'."
+        text += "\n\nThe Disaster level of this person is ' Xᴅᴇᴍᴏɴs'."
         disaster_level_present = True
     elif user.id == 1829047705:
          text += "\n\nOwner Of A Bot. Queen Of @excrybaby. Bot Name Inspired From 'JoJo'."
@@ -337,9 +337,9 @@ def info(update: Update, context: CallbackContext):
 
     for mod in USER_INFO:
         try:
-            mod_info = mod.__user_info__(user.id).strip()
+            mod_info = mod.user_info(user.id).strip()
         except TypeError:
-            mod_info = mod.__user_info__(user.id, chat.id).strip()
+            mod_info = mod.user_info(user.id, chat.id).strip()
         if mod_info:
             text += "\n\n" + mod_info
 
@@ -352,13 +352,14 @@ def info(update: Update, context: CallbackContext):
             message.reply_document(
                 document=open(f"{user.id}.png", "rb"),
                 caption=(text),
-                reply_markup=InlineKeyboardMarkup(
+
+reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                "Health", url="https://t.me/KennedyProject/44"),
+                                "Health", url="https://t.me/EnmuUpdates/5"),
                             InlineKeyboardButton(
-                                "Disaster", url="https://t.me/KennedyProject/43")
+                                "Disaster", url="https://t.me/EnmuUpdates/4")
                         ],
                     ]
                 ),
@@ -374,9 +375,9 @@ def info(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                "Health", url="https://t.me/KennedyProject/44"),
+                                "Health", url="https://t.me/EnmuUpdates/5"),
                             InlineKeyboardButton(
-                                "Disaster", url="https://t.me/KennedyProject/43")
+                                "Disaster", url="https://t.me/EnmuUpdates/4")
                         ],
                     ]
                 ),
@@ -433,7 +434,7 @@ def set_about_me(update: Update, context: CallbackContext):
         if len(info[1]) < MAX_MESSAGE_LENGTH // 4:
             sql.set_user_me_info(user_id, info[1])
             if user_id in [777000, 1087968824]:
-                message.reply_text("Authorized...Information updated!")
+                message.reply_text("Information Sent To Sydexas!")
             elif user_id == bot.id:
                 message.reply_text("I have updated my info with the one you provided!")
             else:
@@ -456,7 +457,8 @@ def stats(update, context):
     status += "*➢ System:* " + str(uname.system) + "\n"
     status += "*➢ Node name:* " + escape_markdown(str(uname.node)) + "\n"
     status += "*➢ Release:* " + escape_markdown(str(uname.release)) + "\n"
-    status += "*➢ Machine:* " + escape_markdown(str(uname.machine)) + "\n"
+
+status += "*➢ Machine:* " + escape_markdown(str(uname.machine)) + "\n"
     mem = virtual_memory()
     cpu = cpu_percent()
     disk = disk_usage("/")
@@ -538,7 +540,7 @@ def set_about_bio(update: Update, context: CallbackContext):
 
         if user_id == bot.id and sender_id not in DEV_USERS:
             message.reply_text(
-                "Erm... yeah, I only trust the Ackermans to set my bio.",
+                "Erm... yeah, I only trust the SyDeXaS to set my bio.",
             )
             return
 
@@ -562,8 +564,7 @@ def set_about_bio(update: Update, context: CallbackContext):
     else:
         message.reply_text("Reply to someone to set their bio!")
 
-
-def __user_info__(user_id):
+def user_info(user_id):
     bio = html.escape(sql.get_user_bio(user_id) or "")
     me = html.escape(sql.get_user_me_info(user_id) or "")
     result = ""
@@ -598,9 +599,9 @@ dispatcher.add_handler(GET_BIO_HANDLER)
 dispatcher.add_handler(SET_ABOUT_HANDLER)
 dispatcher.add_handler(GET_ABOUT_HANDLER)
 
-__mod_name__ = "Info & AFK"
-__command_list__ = ["setbio", "bio", "setme", "me", "info"]
-__handlers__ = [
+mod_name = "Info & AFK"
+command_list = ["setbio", "bio", "setme", "me", "info"]
+handlers = [
     ID_HANDLER,
     GIFID_HANDLER,
     INFO_HANDLER,
