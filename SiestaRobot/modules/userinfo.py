@@ -7,19 +7,20 @@ import platform
 import time
 
 from psutil import cpu_percent, virtual_memory, disk_usage, boot_time
-from platform import python_version
+from platform import python_version 
+
 from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.types import ChannelParticipantsAdmins
 from telethon import events
 
-from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update, MessageEntity, __version__ as ptbver, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import version as ptbversion
+from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update, MessageEntity
 from telegram.ext import CallbackContext, CommandHandler
 from telegram.ext.dispatcher import run_async
 from telegram.error import BadRequest
 from telegram.utils.helpers import escape_markdown, mention_html
-from SiestaRobot.modules.language import gs
-    
-from SiestaRobot import (
+
+from Siestarobot import (
     DEV_USERS,
     OWNER_ID,
     DRAGONS,
@@ -28,20 +29,19 @@ from SiestaRobot import (
     WOLVES,
     INFOPIC,
     dispatcher,
-    sw,
     StartTime,
     SUPPORT_CHAT,
+    sw,
 )
-from SiestaRobot.__main__ import STATS, TOKEN, USER_INFO
-from SiestaRobot.modules.sql import SESSION
-import SiestaRobot.modules.sql.userinfo_sql as sql
-from SiestaRobot.modules.disable import DisableAbleCommandHandler
-from SiestaRobot.modules.sql.global_bans_sql import is_user_gbanned
-from SiestaRobot.modules.sql.afk_sql import is_afk, set_afk
-from SiestaRobot.modules.sql.users_sql import get_user_num_chats
-from SiestaRobot.modules.helper_funcs.chat_status import sudo_plus
-from SiestaRobot.modules.helper_funcs.extraction import extract_user
-from SiestaRobot import telethn
+from Siestarobot.main import STATS, TOKEN, USER_INFO, get_readable_time
+import Siestarobot.modules.sql.userinfo_sql as sql
+from Flare_Robot.modules.disable import DisableAbleCommandHandler
+from Siestarobot.modules.sql.global_bans_sql import is_user_gbanned
+from Siestarobot.modules.sql.afk_sql import is_afk, check_afk_status
+from Siestarobot.modules.sql.users_sql import get_user_num_chats
+from Siestarobot.modules.helper_funcs.chat_status import sudo_plus
+from Siestarobot.modules.helper_funcs.extraction import extract_user
+from Siestarobot import telethn 
 
 def no_by_per(totalhp, percentage):
     """
