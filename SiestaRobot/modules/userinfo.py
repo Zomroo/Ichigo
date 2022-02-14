@@ -166,12 +166,14 @@ def get_id(update: Update, context: CallbackContext):
 
     elif chat.type == "private":
         msg.reply_text(
-            f"Your id is <code>{chat.id}</code>.", parse_mode=ParseMode.HTML,
+            f"Your id is <code>{chat.id}</code>.",
+            parse_mode=ParseMode.HTML,
         )
 
     else:
         msg.reply_text(
-            f"This group's id is <code>{chat.id}</code>.", parse_mode=ParseMode.HTML,
+            f"This group's id is <code>{chat.id}</code>.",
+            parse_mode=ParseMode.HTML,
         )
 
 
@@ -299,7 +301,7 @@ def info(update: Update, context: CallbackContext):
     disaster_level_present = False
 
     if user.id == OWNER_ID:
-        text += "\n\nThis person is my 'darling'."
+        text += "\n\nThe Disaster level of this person is 'King'."
         disaster_level_present = True
     elif user.id in DEV_USERS:
         text += "\n\nThis user is member of 'Prince'."
@@ -354,9 +356,9 @@ def info(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                "Support", url="https://t.me/ichigosupportchat"),
+                                "Health", url="https://t.me/KennedyProject/44"),
                             InlineKeyboardButton(
-                                "Disaster", url="https://t.me/ichigo_updates")
+                                "Disaster", url="https://t.me/KennedyProject/43")
                         ],
                     ]
                 ),
@@ -372,9 +374,9 @@ def info(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                "Support", url="https://t.me/ichigosupportchat"),
+                                "Health", url="https://t.me/KennedyProject/44"),
                             InlineKeyboardButton(
-                                "Disaster", url="https://t.me/ichigo_updates")
+                                "Disaster", url="https://t.me/KennedyProject/43")
                         ],
                     ]
                 ),
@@ -446,9 +448,9 @@ def set_about_me(update: Update, context: CallbackContext):
 
 @sudo_plus
 def stats(update: Update, context: CallbackContext):
-    stats = "<b>╔═━「 Current ichigo Statistics 」</b>\n" + "\n".join([mod.stats() for mod in STATS])
+    stats = "<b>╔═━「 Current Siesta Statistics 」</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
-    result += "\n<b>╘═━「 Powered By haruki 」</b>"
+    result += "\n<b>╘═━「 Powered By Shiinobu 」</b>"
     update.effective_message.reply_text(
         result,
         parse_mode=ParseMode.HTML, 
