@@ -446,7 +446,7 @@ def set_about_me(update: Update, context: CallbackContext):
                 ),
             )
 
-@run_async
+ run_async
 @sudo_plus
 def stats(update, context):
     uptime = datetime.datetime.fromtimestamp(boot_time()).strftime("%Y-%m-%d %H:%M:%S")
