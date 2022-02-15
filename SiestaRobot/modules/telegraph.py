@@ -1,6 +1,6 @@
 import os
 
-from SiestaRobot.events import register
+from Siestarobot.events import register
 from Siestarobot import telethn
 from telethon import events
 from PIL import Image
