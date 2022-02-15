@@ -351,6 +351,15 @@ def flirt(update: Update, context: CallbackContext):
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
     reply_text(random.choice(fun_strings.FLIRT_TEXT))
 
+def abuse(update, context):
+    # reply to correct message
+    reply_text = (
+        update.effective_message.reply_to_message.reply_text
+        if update.effective_message.reply_to_message
+        else update.effective_message.reply_text
+    )
+    reply_text(random.choice(fun.ABUSE_STRINGS))
+
 
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize, run_async=True)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs, run_async=True)
@@ -368,6 +377,7 @@ SHOUT_HANDLER = DisableAbleCommandHandler("shout", shout, run_async=True)
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify, run_async=True)
 GBAM_HANDLER = DisableAbleCommandHandler("gbam", gbam, run_async=True)
 FLIRT_HANDLER = DisableAbleCommandHandler("flirt", flirt, run_async=True)
+ABUSE_HANDLER = DisableAbleCommandHandler("abuse", abuse,  run_async=True)
 
 dispatcher.add_handler(WEEBIFY_HANDLER)
 dispatcher.add_handler(SHOUT_HANDLER)
@@ -385,6 +395,7 @@ dispatcher.add_handler(EIGHTBALL_HANDLER)
 dispatcher.add_handler(TABLE_HANDLER)
 dispatcher.add_handler(GBAM_HANDLER)
 dispatcher.add_handler(FLIRT_HANDLER)
+dispatcher.add_handler(ABUSE_HANDLER)
 
 __mod_name__ = "Fun"
 __command_list__ = [
@@ -404,6 +415,8 @@ __command_list__ = [
     "gbam",
     "8ball",
     "flirt",
+    "abuse",
+
 ]
 __handlers__ = [
     RUNS_HANDLER,
@@ -422,4 +435,5 @@ __handlers__ = [
     EIGHTBALL_HANDLER,
     GBAM_HANDLER,
     FLIRT_HANDLER,
+    ABUSE_HANDLER,
 ]
