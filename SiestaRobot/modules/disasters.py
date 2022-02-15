@@ -93,7 +93,7 @@ def addsudo(update: Update, context: CallbackContext) -> str:
 
     update.effective_message.reply_text(
         rt
-        + "\nSuccessfully added {} as my oni chan !".format(
+        + "\nSuccessfully added {} as my senpai !".format(
             user_member.first_name,
         ),
     )
