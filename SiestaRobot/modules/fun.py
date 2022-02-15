@@ -352,7 +352,6 @@ def flirt(update: Update, context: CallbackContext):
     reply_text(random.choice(fun_strings.FLIRT_TEXT))
 
 def abuse(update, context):
-    # reply to correct message
     reply_text = (
         update.effective_message.reply_to_message.reply_text
         if update.effective_message.reply_to_message
