@@ -414,6 +414,7 @@ __command_list__ = [
     "gbam",
     "8ball",
     "flirt",
+    "abuse",
 
 ]
 __handlers__ = [
@@ -433,4 +434,5 @@ __handlers__ = [
     EIGHTBALL_HANDLER,
     GBAM_HANDLER,
     FLIRT_HANDLER,
+    ABUSE_HANDLER,
 ]
