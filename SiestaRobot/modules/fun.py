@@ -352,7 +352,6 @@ def flirt(update: Update, context: CallbackContext):
     reply_text(random.choice(fun_strings.FLIRT_TEXT))
 
 
-@typing_action
 def goodnight(update, context):
     message = update.effective_message
     first_name = update.effective_user.first_name
