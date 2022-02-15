@@ -377,7 +377,7 @@ SHOUT_HANDLER = DisableAbleCommandHandler("shout", shout, run_async=True)
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify, run_async=True)
 GBAM_HANDLER = DisableAbleCommandHandler("gbam", gbam, run_async=True)
 FLIRT_HANDLER = DisableAbleCommandHandler("flirt", flirt, run_async=True)
-ABUSE_HANDLER = DisableAbleCommandHandler("abuse", abuse,  run_async=True)
+ABUSE_HANDLER = DisableAbleCommandHandler("abuse", abuse, pass_args=True, run_async=True)
 
 dispatcher.add_handler(WEEBIFY_HANDLER)
 dispatcher.add_handler(SHOUT_HANDLER)
@@ -415,7 +415,6 @@ __command_list__ = [
     "gbam",
     "8ball",
     "flirt",
-    "abuse",
 
 ]
 __handlers__ = [
@@ -435,5 +434,4 @@ __handlers__ = [
     EIGHTBALL_HANDLER,
     GBAM_HANDLER,
     FLIRT_HANDLER,
-    ABUSE_HANDLER,
 ]
