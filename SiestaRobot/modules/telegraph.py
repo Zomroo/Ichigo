@@ -1,7 +1,7 @@
 import os
 
-from Siestarobot.events import register
-from Siestarobot import telethn
+from SiestaRobot.events import register
+from SiestaRobot import telethn
 from telethon import events
 from PIL import Image
 from datetime import datetime
