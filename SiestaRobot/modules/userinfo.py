@@ -367,7 +367,7 @@ def info(update: Update, context: CallbackContext):
                 parse_mode=ParseMode.HTML,
             )
 
-            os.remove(f"{user.id}.png")
+           
         # Incase user don't have profile pic, send normal text
         except IndexError:
             message.reply_text(
@@ -376,9 +376,11 @@ def info(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                "Health", url="https://t.me/KennedyProject/44"),
+                                "Health", url="https://t.me/komiinfo/3"),
                             InlineKeyboardButton(
-                                "Disaster", url="https://t.me/KennedyProject/43")
+                                "Disaster", url="https://t.me/komiinfo/2"),
+                            InlineKeyboardButton(
+                                "User", url=f"https://t.me/{html.escape(user.username)}")
                         ],
                     ]
                 ),
@@ -390,6 +392,7 @@ def info(update: Update, context: CallbackContext):
         message.reply_text(
             text, parse_mode=ParseMode.HTML,
         )
+
 
     rep.delete()
 
