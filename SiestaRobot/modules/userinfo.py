@@ -337,28 +337,30 @@ def info(update: Update, context: CallbackContext):
 
     for mod in USER_INFO:
         try:
-            mod_info = mod.__user_info__(user.id).strip()
+            mod_info = mod.user_info(user.id).strip()
         except TypeError:
-            mod_info = mod.__user_info__(user.id, chat.id).strip()
+            mod_info = mod.user_info(user.id, chat.id).strip()
         if mod_info:
             text += "\n\n" + mod_info
 
     if INFOPIC:
         try:
+            username=update.effective_user.username
             profile = context.bot.get_user_profile_photos(user.id).photos[0][-1]
-            _file = bot.get_file(profile["file_id"])
-            _file.download(f"{user.id}.png")
-
-            message.reply_document(
-                document=open(f"{user.id}.png", "rb"),
+            context.bot.sendChatAction(chat.id, "upload_photo")
+            context.bot.send_photo(
+            chat.id,
+            photo=profile,
                 caption=(text),
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                "Health", url="https://t.me/KennedyProject/44"),
+                                "Health", url="https://t.me/komiinfo/3"),
                             InlineKeyboardButton(
-                                "Disaster", url="https://t.me/KennedyProject/43")
+                                "Disaster", url="https://t.me/komiinfo/2"),
+                            InlineKeyboardButton(
+                                "User", url=f"https://t.me/{html.escape(user.username)}")
                         ],
                     ]
                 ),
