@@ -447,15 +447,47 @@ def set_about_me(update: Update, context: CallbackContext):
             )
 
 @sudo_plus
-def stats(update: Update, context: CallbackContext):
-    stats = "<b>╔═━「 ichigo san Statistics 」</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
-    result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
-    result += "\n<b>╘═━「 Powered By haruki 」</b>"
-    update.effective_message.reply_text(
-        result,
-        parse_mode=ParseMode.HTML, 
-        disable_web_page_preview=True
-   )
+def stats(update, context):
+    uptime = datetime.datetime.fromtimestamp(boot_time()).strftime("%Y-%m-%d %H:%M:%S")
+    status = "*╒═══「 System Statistics 」*\n\n"
+    status += "*➢ System Start time:* " + str(uptime) + "\n"
+    uname = platform.uname()
+    status += "*➢ System:* " + str(uname.system) + "\n"
+    status += "*➢ Node name:* " + escape_markdown(str(uname.node)) + "\n"
+    status += "*➢ Release:* " + escape_markdown(str(uname.release)) + "\n"
+    status += "*➢ Machine:* " + escape_markdown(str(uname.machine)) + "\n"
+    mem = virtual_memory()
+    cpu = cpu_percent()
+    disk = disk_usage("/")
+    status += "*➢ CPU:* " + str(cpu) + " %\n"
+    status += "*➢ RAM:* " + str(mem[2]) + " %\n"
+    status += "*➢ Storage:* " + str(disk[3]) + " %\n\n"
+    status += "*➢ Python Version:* " + python_version() + "\n"
+    try:
+        update.effective_message.reply_text(
+            status
+            + "\n*Bot statistics*:\n"
+            + "\n".join([mod.__stats__() for mod in STATS])
+            + f"\n\n✦ [Support](https://t.me/Sakuraxsupport) | ✦ [Updates](https://t.me/Sakuraxsupport)\n\n"
+            + "╘══「 Powered By [sakura](https://t.me/sakuraxrobot) | [Network](https://t.me/theacademy_official) 」\n",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+        )
+    except BaseException:
+        update.effective_message.reply_text(
+            (
+                (
+                    (
+                        "\n*Bot Statistics*:\n"
+                        + "\n".join(mod.__stats__() for mod in STATS)
+                    )
+                    + f"\n\n✦ [Support](https://t.me/Sakuraxsupport) | ✦ [Updates](http://t.me/Sakuraxsupport)\n\n"
+                )
+                + "╘══「 Powered By [sakura](https://t.me/Sakuraxrobot) | [Network](http://t.me/theacademy_official)」\n"
+            ),
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+        )
         
         
 def about_bio(update: Update, context: CallbackContext):
