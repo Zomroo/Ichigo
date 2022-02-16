@@ -352,14 +352,14 @@ def flirt(update: Update, context: CallbackContext):
     reply_text(random.choice(fun_strings.FLIRT_TEXT))
 
 
-def dark(bot: Bot, update: Update):
+def dark(update: Update, context: CallbackContext):
     bot.sendChatAction(
         update.effective_chat.id, "typing"
     )  # Bot typing before send messages
     message = update.effective_message
     if message.reply_to_message:
         message.reply_to_message.reply_text(random.choice(SFW_STRINGS))
-    else:
+        else:
         message.reply_text(random.choice(SFW_STRINGS))
 
 
