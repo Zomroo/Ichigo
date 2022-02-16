@@ -381,7 +381,7 @@ SHOUT_HANDLER = DisableAbleCommandHandler("shout", shout, run_async=True)
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify, run_async=True)
 GBAM_HANDLER = DisableAbleCommandHandler("gbam", gbam, run_async=True)
 FLIRT_HANDLER = DisableAbleCommandHandler("flirt", flirt, run_async=True)
-DARK_HANDLER = DisableAbleCommandHandler("dark", dark , run_async=True)
+ABUSE_HANDLER = DisableAbleCommandHandler("abuse", abuse, pass_args=True, run_async=True)
 
 dispatcher.add_handler(WEEBIFY_HANDLER)
 dispatcher.add_handler(SHOUT_HANDLER)
@@ -399,7 +399,7 @@ dispatcher.add_handler(EIGHTBALL_HANDLER)
 dispatcher.add_handler(TABLE_HANDLER)
 dispatcher.add_handler(GBAM_HANDLER)
 dispatcher.add_handler(FLIRT_HANDLER)
-dispatcher.add_handler(DARK_HANDLER)
+dispatcher.add_handler(ABUSE_HANDLER)
 
 __mod_name__ = "Fun"
 __command_list__ = [
@@ -439,5 +439,5 @@ __handlers__ = [
     EIGHTBALL_HANDLER,
     GBAM_HANDLER,
     FLIRT_HANDLER,
-    DARK_HANDLER,
+    ABUSE_HANDLER,
 ]
