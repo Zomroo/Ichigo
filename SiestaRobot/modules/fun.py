@@ -367,6 +367,14 @@ def abuse(update, context):
     reply_text(random.choice(fun_strings.ABUSE_STRINGS))
 
 
+@typing_action
+def goodnight(update, context):
+    message = update.effective_message
+    first_name = update.effective_user.first_name
+    reply = f"Good Night! {escape_markdown(first_name)}" 
+    message.reply_text(reply, parse_mode=ParseMode.MARKDOWN)
+
+
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize, run_async=True)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs, run_async=True)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap, run_async=True)
@@ -384,6 +392,9 @@ WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify, run_async=True)
 GBAM_HANDLER = DisableAbleCommandHandler("gbam", gbam, run_async=True)
 FLIRT_HANDLER = DisableAbleCommandHandler("flirt", flirt, run_async=True)
 ABUSE_HANDLER = DisableAbleCommandHandler("abuse", abuse, pass_args=True, run_async=True)
+GDNIGHT_HANDLER = DisableAbleMessageHandler(
+    Filters.regex(r"(?i)(goodnight|good night)"), goodnight, friendly="goodnight", run_async=True
+)
 
 dispatcher.add_handler(WEEBIFY_HANDLER)
 dispatcher.add_handler(SHOUT_HANDLER)
@@ -402,6 +413,7 @@ dispatcher.add_handler(TABLE_HANDLER)
 dispatcher.add_handler(GBAM_HANDLER)
 dispatcher.add_handler(FLIRT_HANDLER)
 dispatcher.add_handler(ABUSE_HANDLER)
+dispatcher.add_handler(GDNIGHT_HANDLER)
 
 __mod_name__ = "Fun"
 __command_list__ = [
@@ -442,4 +454,5 @@ __handlers__ = [
     GBAM_HANDLER,
     FLIRT_HANDLER,
     ABUSE_HANDLER,
+    GDNIGHT_HANDLER,
 ]
