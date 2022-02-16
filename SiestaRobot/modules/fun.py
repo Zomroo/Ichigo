@@ -377,7 +377,7 @@ def cuddle(update: Update, context: CallbackContext):
 	        temp = random.choice(fun_strings.CUDDLE_GIF)
 	        reply_to.reply_animation(temp)
 	    except BadRequest:
-	        cuddle_type = "Text"
+	        cuddle_type = "Gif"
 
 	if cuddle_type == "Text":
 	    temp = random.choice(fun_strings.CUDDLE_TEMPLATES)
