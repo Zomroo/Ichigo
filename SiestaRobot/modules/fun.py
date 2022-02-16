@@ -13,6 +13,8 @@ from telegram.error import BadRequest
 
 from telegram.ext import CallbackContext
 
+from telegram import Message, Chat, Update, Bot, MessageEntity
+
 from SiestaRobot import DRAGONS, DEMONS
 
 GIF_ID = "CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr5nGxsE"
