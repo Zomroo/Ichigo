@@ -650,13 +650,13 @@ WAIFU_HANDLER = CommandHandler("waifu", waifu, run_async=True)
 LEWD_HANDLER = CommandHandler("lewd", lewd, run_async=True)
 KISS_HANDLER = CommandHandler("kiss", kiss, run_async=True)
 FEMDOM_HANDLER = CommandHandler("femdom", femdom, run_async=True)
+HUG_HANDLER = CommandHandler("hug", hug, run_async=True)
 CUDDLE_HANDLER = CommandHandler("hug", hug, run_async=True)
 EROK_HANDLER = CommandHandler("erok", erok, run_async=True)
 FOXGIRL_HANDLER = CommandHandler("foxgirl", foxgirl, run_async=True)
 TITSGIF_HANDLER = CommandHandler("titsgif", titsgif, run_async=True)
 ERO_HANDLER = CommandHandler("ero", ero, run_async=True)
 SMUG_HANDLER = CommandHandler("smug", smug, run_async=True)
-HUG_HANDLER = CommandHandler("hug", hug, run_async=True)
 BAKA_HANDLER = CommandHandler("baka", baka, run_async=True)
 DVA_HANDLER = CommandHandler("dva", dva, run_async=True)
 
@@ -709,12 +709,12 @@ dispatcher.add_handler(LEWD_HANDLER)
 dispatcher.add_handler(KISS_HANDLER)
 dispatcher.add_handler(FEMDOM_HANDLER)
 dispatcher.add_handler(CUDDLE_HANDLER)
+dispatcher.add_handler(HUG_HANDLER)
 dispatcher.add_handler(EROK_HANDLER)
 dispatcher.add_handler(FOXGIRL_HANDLER)
 dispatcher.add_handler(TITSGIF_HANDLER)
 dispatcher.add_handler(ERO_HANDLER)
 dispatcher.add_handler(SMUG_HANDLER)
-dispatcher.add_handler(HUG_HANDLER)
 dispatcher.add_handler(BAKA_HANDLER)
 dispatcher.add_handler(DVA_HANDLER)
 
@@ -766,13 +766,13 @@ __handlers__ = [
     KISS_HANDLER,
     FEMDOM_HANDLER,
     LEWDKEMO_HANDLER,
+    HUG_HANDLER,
     CUDDLE_HANDLER,
     EROK_HANDLER,
     FOXGIRL_HANDLER,
     TITSGIF_HANDLER,
     ERO_HANDLER,
     SMUG_HANDLER,
-    HUG_HANDLER,
     BAKA_HANDLER,
     DVA_HANDLER,
 ]
