@@ -352,6 +352,17 @@ def flirt(update: Update, context: CallbackContext):
     reply_text(random.choice(fun_strings.FLIRT_TEXT))
 
 
+def dark(bot: Bot, update: Update):
+    bot.sendChatAction(
+        update.effective_chat.id, "typing"
+    )  # Bot typing before send messages
+    message = update.effective_message
+    if message.reply_to_message:
+        message.reply_to_message.reply_text(random.choice(SFW_STRINGS))
+    else:
+        message.reply_text(random.choice(SFW_STRINGS))
+
+
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize, run_async=True)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs, run_async=True)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap, run_async=True)
@@ -368,6 +379,7 @@ SHOUT_HANDLER = DisableAbleCommandHandler("shout", shout, run_async=True)
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify, run_async=True)
 GBAM_HANDLER = DisableAbleCommandHandler("gbam", gbam, run_async=True)
 FLIRT_HANDLER = DisableAbleCommandHandler("flirt", flirt, run_async=True)
+DARK_HANDLER = DisableAbleCommandHandler("dark", dark , run_async=True)
 
 dispatcher.add_handler(WEEBIFY_HANDLER)
 dispatcher.add_handler(SHOUT_HANDLER)
@@ -385,6 +397,7 @@ dispatcher.add_handler(EIGHTBALL_HANDLER)
 dispatcher.add_handler(TABLE_HANDLER)
 dispatcher.add_handler(GBAM_HANDLER)
 dispatcher.add_handler(FLIRT_HANDLER)
+dispatcher.add_handler(DARK_HANDLER)
 
 __mod_name__ = "Fun"
 __command_list__ = [
@@ -404,6 +417,7 @@ __command_list__ = [
     "gbam",
     "8ball",
     "flirt",
+    "Abuse",
 
 ]
 __handlers__ = [
@@ -423,4 +437,5 @@ __handlers__ = [
     EIGHTBALL_HANDLER,
     GBAM_HANDLER,
     FLIRT_HANDLER,
+    DARK_HANDLER,
 ]
