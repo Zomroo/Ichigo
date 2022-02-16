@@ -371,13 +371,13 @@ def cuddle(update: Update, context: CallbackContext):
 	    user1 = bot.first_name
 	    user2 = curr_user
 
-	cuddle_type = random.choice(("Gif"))
+	cuddle_type = random.choice(('Text", "Gif"))
 	if cuddle_type == "Gif":
 	    try:
 	        temp = random.choice(fun_strings.CUDDLE_GIF)
 	        reply_to.reply_animation(temp)
 	    except BadRequest:
-	        cuddle_type = "Gif"
+	        cuddle_type = "Text"
 
 	if cuddle_type == "Text":
 	    temp = random.choice(fun_strings.CUDDLE_TEMPLATES)
