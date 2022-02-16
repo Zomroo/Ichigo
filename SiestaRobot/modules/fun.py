@@ -354,15 +354,15 @@ def flirt(update: Update, context: CallbackContext):
     reply_text(random.choice(fun_strings.FLIRT_TEXT))
 
 
-def dark(update: Update, context: CallbackContext):
-    bot.sendChatAction(
-        update.effective_chat.id, "typing"
-    )  # Bot typing before send messages
-    message = update.effective_message
-    if message.reply_to_message:
-        message.reply_to_message.reply_text(random.choice(SFW_STRINGS))
-    else:
-        message.reply_text(random.choice(SFW_STRINGS))
+@typing_action
+def abuse(update, context):
+    # reply to correct message
+    reply_text = (
+        update.effective_message.reply_to_message.reply_text
+        if update.effective_message.reply_to_message
+        else update.effective_message.reply_text
+    )
+    reply_text(random.choice(fun.ABUSE_STRINGS))
 
 
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize, run_async=True)
