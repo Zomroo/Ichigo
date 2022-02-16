@@ -356,9 +356,9 @@ def info(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                "Health", url="https://t.me/komiinfo/3"),
+                                "Support", url="https://t.me/ichigosupportchat"),
                             InlineKeyboardButton(
-                                "Disaster", url="https://t.me/komiinfo/2"),
+                                "Disasters", url="https://t.me/ichigoxupdates"),
                             InlineKeyboardButton(
                                 "User", url=f"https://t.me/{html.escape(user.username)}")
                         ],
@@ -376,9 +376,9 @@ def info(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                "Health", url="https://t.me/komiinfo/3"),
+                                "Support", url="https://t.me/ichigosupportchat"),
                             InlineKeyboardButton(
-                                "Disaster", url="https://t.me/komiinfo/2"),
+                                "Disaster", url="https://t.me/ichigoxupdates"),
                             InlineKeyboardButton(
                                 "User", url=f"https://t.me/{html.escape(user.username)}")
                         ],
