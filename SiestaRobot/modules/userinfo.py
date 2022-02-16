@@ -468,8 +468,8 @@ def stats(update, context):
             status
             + "\n*Bot statistics*:\n"
             + "\n".join([mod.__stats__() for mod in STATS])
-            + f"\n\n✦ [Support](https://t.me/Sakuraxsupport) | ✦ [Updates](https://t.me/Sakuraxsupport)\n\n"
-            + "╘══「 Powered By [sakura](https://t.me/sakuraxrobot) | [Network](https://t.me/theacademy_official) 」\n",
+            + f"\n\n✦ [Support](https://t.me/ichigosupportchat) | ✦ [Updates](https://t.me/ichigosupportchat)\n\n"
+            + "╘══「 Powered By [ichigo](https://t.me/ichigoxsinbot) | [Network](https://t.me/theacademy_official) 」\n",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
         )
@@ -481,9 +481,9 @@ def stats(update, context):
                         "\n*Bot Statistics*:\n"
                         + "\n".join(mod.__stats__() for mod in STATS)
                     )
-                    + f"\n\n✦ [Support](https://t.me/Sakuraxsupport) | ✦ [Updates](http://t.me/Sakuraxsupport)\n\n"
+                    + f"\n\n✦ [Support](https://t.me/ichigosupportchat) | ✦ [Updates](http://t.me/Sakuraxsupport)\n\n"
                 )
-                + "╘══「 Powered By [sakura](https://t.me/Sakuraxrobot) | [Network](http://t.me/theacademy_official)」\n"
+                + "╘══「 Powered By [ichigo](https://t.me/ichigoxsinbot) | [Network](http://t.me/theacademy_official)」\n"
             ),
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
