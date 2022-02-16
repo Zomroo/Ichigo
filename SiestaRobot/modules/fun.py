@@ -364,7 +364,7 @@ def abuse(update, context):
         if update.effective_message.reply_to_message
         else update.effective_message.reply_text
     )
-    reply_text(random.choice(fun.ABUSE_STRINGS))
+    reply_text(random.choice(fun_strings.ABUSE_STRINGS))
 
 
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize, run_async=True)
