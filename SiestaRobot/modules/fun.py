@@ -17,6 +17,8 @@ from telegram import Message, Chat, Update, Bot, MessageEntity
 
 from SiestaRobot import DRAGONS, DEMONS
 
+from SiestaRobot.modules.helper_funcs.alternate import typing_action
+
 GIF_ID = "CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr5nGxsE"
 
 
