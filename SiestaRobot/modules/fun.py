@@ -15,6 +15,8 @@ from telegram.ext import CallbackContext
 
 from telegram import Message, Chat, Update, Bot, MessageEntity
 
+from pyrogram import filters
+
 from SiestaRobot import DRAGONS, DEMONS
 
 from SiestaRobot.modules.helper_funcs.alternate import typing_action
