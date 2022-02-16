@@ -575,6 +575,12 @@ def smug(update, context):
     msg.reply_video(nekos.img(target))
 
 
+def cuddle(update, context):
+    msg = update.effective_message
+    target = "cuddle"
+    msg.reply_video(nekos.img(target))
+
+
 def baka(update, context):
     msg = update.effective_message
     target = "baka"
@@ -650,6 +656,7 @@ FOXGIRL_HANDLER = CommandHandler("foxgirl", foxgirl, run_async=True)
 TITSGIF_HANDLER = CommandHandler("titsgif", titsgif, run_async=True)
 ERO_HANDLER = CommandHandler("ero", ero, run_async=True)
 SMUG_HANDLER = CommandHandler("smug", smug, run_async=True)
+HUG_HANDLER = CommandHandler("hug", hug, run_async=True)
 BAKA_HANDLER = CommandHandler("baka", baka, run_async=True)
 DVA_HANDLER = CommandHandler("dva", dva, run_async=True)
 
@@ -707,6 +714,7 @@ dispatcher.add_handler(FOXGIRL_HANDLER)
 dispatcher.add_handler(TITSGIF_HANDLER)
 dispatcher.add_handler(ERO_HANDLER)
 dispatcher.add_handler(SMUG_HANDLER)
+dispatcher.add_handler(HUG_HANDLER)
 dispatcher.add_handler(BAKA_HANDLER)
 dispatcher.add_handler(DVA_HANDLER)
 
@@ -764,6 +772,7 @@ __handlers__ = [
     TITSGIF_HANDLER,
     ERO_HANDLER,
     SMUG_HANDLER,
+    HUG_HANDLER,
     BAKA_HANDLER,
     DVA_HANDLER,
 ]
@@ -823,6 +832,7 @@ __help__ =
 ❂ /titsgif: Sends Random Tits GIFs.
 ❂ /ero: Sends Random Ero source Images.
 ❂ /smug: Sends Random Smug GIFs.
+❂ /hug: Sends Random Hug GIFs.
 ❂ /baka: Sends Random Baka Shout GIFs.
 ❂ /dva: Sends Random D.VA source Images.
 """
