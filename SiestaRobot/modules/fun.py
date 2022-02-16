@@ -359,7 +359,7 @@ def dark(update: Update, context: CallbackContext):
     message = update.effective_message
     if message.reply_to_message:
         message.reply_to_message.reply_text(random.choice(SFW_STRINGS))
-      else:  
+    else:
         message.reply_text(random.choice(SFW_STRINGS))
 
 
