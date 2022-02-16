@@ -352,6 +352,39 @@ def flirt(update: Update, context: CallbackContext):
     reply_text(random.choice(fun_strings.FLIRT_TEXT))
 
 
+def cuddle(update: Update, context: CallbackContext):
+	bot = context.bot
+	args = context.args
+	message = update.effective_message
+
+	reply_to = message.reply_to_message or message
+
+	curr_user = html.escape(message.from_user.first_name)
+	user_id = extract_user(message, args)
+
+	if user_id:
+	    cuddled_user = bot.get_chat(user_id)
+	    user1 = curr_user
+	    user2 = html.escape(cuddled_user.first_name)
+
+	else:
+	    user1 = bot.first_name
+	    user2 = curr_user
+
+	cuddle_type = random.choice(("Text", "Gif"))
+	if cuddle_type == "Gif":
+	    try:
+	        temp = random.choice(fun_strings.CUDDLE_GIF)
+	        reply_to.reply_animation(temp)
+	    except BadRequest:
+	        cuddle_type = "Text"
+
+	if cuddle_type == "Text":
+	    temp = random.choice(fun_strings.CUDDLE_TEMPLATES)
+	    reply = temp.format(user1=user1, user2=user2)
+	    reply_to.reply_text(reply, parse_mode=ParseMode.HTML)
+
+
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize, run_async=True)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs, run_async=True)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap, run_async=True)
@@ -368,6 +401,7 @@ SHOUT_HANDLER = DisableAbleCommandHandler("shout", shout, run_async=True)
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify, run_async=True)
 GBAM_HANDLER = DisableAbleCommandHandler("gbam", gbam, run_async=True)
 FLIRT_HANDLER = DisableAbleCommandHandler("flirt", flirt, run_async=True)
+CUDDLE_HANDLER = DisableAbleCommandHandler("cuddle", cuddle, run_async=True)
 
 dispatcher.add_handler(WEEBIFY_HANDLER)
 dispatcher.add_handler(SHOUT_HANDLER)
@@ -385,6 +419,7 @@ dispatcher.add_handler(EIGHTBALL_HANDLER)
 dispatcher.add_handler(TABLE_HANDLER)
 dispatcher.add_handler(GBAM_HANDLER)
 dispatcher.add_handler(FLIRT_HANDLER)
+dispatcher.add_handler(CUDDLE_HANDLER)
 
 __mod_name__ = "Fun"
 __command_list__ = [
@@ -404,6 +439,7 @@ __command_list__ = [
     "gbam",
     "8ball",
     "flirt",
+    "cuddle",
 
 ]
 __handlers__ = [
@@ -423,4 +459,5 @@ __handlers__ = [
     EIGHTBALL_HANDLER,
     GBAM_HANDLER,
     FLIRT_HANDLER,
+    CUDDLE_HANDLER,
 ]
