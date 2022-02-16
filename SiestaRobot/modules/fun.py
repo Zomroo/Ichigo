@@ -17,6 +17,8 @@ from telegram import Message, Chat, Update, Bot, MessageEntity
 
 from telegram.ext import CallbackContext, run_async, Filters
 
+from telegram.utils.helpers import escape_markdown
+
 from SiestaRobot import DRAGONS, DEMONS
 
 from SiestaRobot.modules.helper_funcs.alternate import typing_action
