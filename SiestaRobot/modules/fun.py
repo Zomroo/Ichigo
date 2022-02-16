@@ -15,7 +15,7 @@ from telegram.ext import CallbackContext
 
 from telegram import Message, Chat, Update, Bot, MessageEntity
 
-from pyrogram import filters
+from telegram.ext import CallbackContext, run_async, Filters
 
 from SiestaRobot import DRAGONS, DEMONS
 
