@@ -371,7 +371,7 @@ def cuddle(update: Update, context: CallbackContext):
 	    user1 = bot.first_name
 	    user2 = curr_user
 
-	cuddle_type = random.choice(("Text", "Gif"))
+	cuddle_type = random.choice(("Gif"))
 	if cuddle_type == "Gif":
 	    try:
 	        temp = random.choice(fun_strings.CUDDLE_GIF)
