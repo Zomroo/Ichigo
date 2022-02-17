@@ -124,56 +124,56 @@ def unmute(update: Update, context: CallbackContext) -> str:
     user = update.effective_user
     message = update.effective_message
 
-    user_id, reason = extract_user_and_text(message, args)
+    user_id = extract_user(message, args)
     if not user_id:
         message.reply_text(
-            "You'll need to either give me a username to unmute, or reply to someone to be unmuted."
+            "You'll need to either give me a username to unmute, or reply to someone to be unmuted.",
         )
         return ""
 
     member = chat.get_member(int(user_id))
 
-    if member.status in ("kicked", "left"):
-        message.reply_text(
-            "This user isn't even in the chat, unmuting them won't make them talk more than they "
-            "already do!",
-        )
-
-    elif (
+    if member.status != "kicked" and member.status != "left":
+        if (
             member.can_send_messages
             and member.can_send_media_messages
             and member.can_send_other_messages
             and member.can_add_web_page_previews
         ):
-        message.reply_text("This user already has the right to speak.")
+            message.reply_text("This user already has the right to speak.")
+        else:
+            chat_permissions = ChatPermissions(
+                can_send_messages=True,
+                can_invite_users=True,
+                can_pin_messages=True,
+                can_send_polls=True,
+                can_change_info=True,
+                can_send_media_messages=True,
+                can_send_other_messages=True,
+                can_add_web_page_previews=True,
+            )
+            try:
+                bot.restrict_chat_member(
+                    chat.id, int(user_id), chat_permissions)
+            except BadRequest:
+                pass
+            bot.sendMessage(
+                chat.id,
+                f"I shall allow <b>{html.escape(member.user.first_name)}</b> to text!",
+                parse_mode=ParseMode.HTML,
+            )
+            return (
+                f"<b>{html.escape(chat.title)}:</b>\n"
+                f"#UNMUTE\n"
+                f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+                f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}"
+            )
     else:
-        chat_permissions = ChatPermissions(
-            can_send_messages=True,
-            can_invite_users=True,
-            can_pin_messages=True,
-            can_send_polls=True,
-            can_change_info=True,
-            can_send_media_messages=True,
-            can_send_other_messages=True,
-            can_add_web_page_previews=True,
+        message.reply_text(
+            "This user isn't even in the chat, unmuting them won't make them talk more than they "
+            "already do!",
         )
-        try:
-            bot.restrict_chat_member(chat.id, int(user_id), chat_permissions)
-        except BadRequest:
-            pass
-        bot.sendMessage(
-        chat.id,
-        "{} [<code>{}</code>] {} Was 🔊 Unmuted.\n\nReason: <code>{}</code>".format(
-            mention_html(member.user.id, member.user.first_name), member.user.id, reason
-        ),
-        parse_mode=ParseMode.HTML,
-        )
-        return (
-            f"<b>{html.escape(chat.title)}:</b>\n"
-            f"#UNMUTE\n"
-            f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
-            f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}"
-        )
+
     return ""
 
 
