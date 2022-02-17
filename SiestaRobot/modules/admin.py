@@ -1,12 +1,14 @@
 import html
+import re
+import requests
 
-from telegram import ParseMode, Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import ParseMode, Update, InlineKeyboardButton, InlineKeyboardMarkup ,CallbackQuery
 from telegram.error import BadRequest
-from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
+from telegram.ext import CallbackContext, CommandHandler, Filters, run_async  ,CallbackQueryHandler
 from telegram.utils.helpers import mention_html
 
-from SiestaRobot import DRAGONS, dispatcher
-from SiestaRobot.modules.disable import DisableAbleCommandHandler
+from SiestaRobot import DEV_USERS, dispatcher
+from SiestaRobot.modules.disable import DisableAbleCommandHandler 
 from SiestaRobot.modules.helper_funcs.chat_status import (
     bot_admin,
     can_pin,
@@ -23,7 +25,6 @@ from SiestaRobot.modules.helper_funcs.extraction import (
 )
 from SiestaRobot.modules.log_channel import loggable
 from SiestaRobot.modules.helper_funcs.alternate import send_message
-from SiestaRobot.modules.language import gs
 
 
 @bot_admin
@@ -175,7 +176,7 @@ def promote(update: Update, context: CallbackContext) -> str:
 
     if (
         not (promoter.can_promote_members or promoter.status == "creator")
-        and user.id not in DRAGONS
+        and user.id not in DEV_USERS
     ):
         message.reply_text("You don't have the necessary rights to do that!")
         return
@@ -223,16 +224,105 @@ def promote(update: Update, context: CallbackContext) -> str:
         else:
             message.reply_text("An error occured while promoting.")
         return
+    
+    keyboard = InlineKeyboardMarkup([[
+        InlineKeyboardButton(
+            "Demote", callback_data="demote_komi({})".format(user_member.user.id))
+    ]])    
 
     bot.sendMessage(
         chat.id,
         f"Promoting a user in <b>{chat.title}</b>\n\nUser: {mention_html(user_member.user.id, user_member.user.first_name)}\nAdmin: {mention_html(user.id, user.first_name)}",
+        reply_markup=keyboard,
         parse_mode=ParseMode.HTML,
     )
 
     log_message = (
         f"<b>{html.escape(chat.title)}:</b>\n"
         f"#PROMOTED\n"
+        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+        f"<b>User:</b> {mention_html(user_member.user.id, user_member.user.first_name)}"
+    )
+
+    return log_message
+
+
+@connection_status
+@bot_admin
+@can_promote
+@user_admin
+@loggable
+def lowpromote(update: Update, context: CallbackContext) -> str:
+    bot = context.bot
+    args = context.args
+
+    message = update.effective_message
+    chat = update.effective_chat
+    user = update.effective_user
+
+    promoter = chat.get_member(user.id)
+
+    if (
+        not (promoter.can_promote_members or promoter.status == "creator")
+        and user.id not in DEV_USERS
+    ):
+        message.reply_text("You don't have the necessary rights to do that!")
+        return
+
+    user_id = extract_user(message, args)
+
+    if not user_id:
+        message.reply_text(
+            "You don't seem to be referring to a user or the ID specified is incorrect..",
+        )
+        return
+
+    try:
+        user_member = chat.get_member(user_id)
+    except:
+        return
+
+    if user_member.status in ('administrator', 'creator'):
+        message.reply_text("How am I meant to promote someone that's already an admin?")
+        return
+
+    if user_id == bot.id:
+        message.reply_text("I can't promote myself! Get an admin to do it for me.")
+        return
+
+    # set same perms as bot - bot can't assign higher perms than itself!
+    bot_member = chat.get_member(bot.id)
+
+    try:
+        bot.promoteChatMember(
+            chat.id,
+            user_id,
+            can_delete_messages=bot_member.can_delete_messages,
+            can_invite_users=bot_member.can_invite_users,
+            can_pin_messages=bot_member.can_pin_messages,
+        )
+    except BadRequest as err:
+        if err.message == "User_not_mutual_contact":
+            message.reply_text("I can't promote someone who isn't in the group.")
+        else:
+            message.reply_text("An error occured while promoting.")
+        return
+    
+    keyboard = InlineKeyboardMarkup([[
+        InlineKeyboardButton(
+            "Demote", callback_data="demote_komi({})".format(user_member.user.id))
+    ]])
+    
+    bot.sendMessage(
+        chat.id,
+        f"Lowpromoting a user in <b>{chat.title}<b>\n\nUser: {mention_html(user_member.user.id, user_member.user.first_name)}\nAdmin: {mention_html(user.id, user.first_name)}",
+        reply_markup=keyboard,
+        parse_mode=ParseMode.HTML,
+    )
+
+    log_message = (
+        f"<b>{html.escape(chat.title)}:</b>\n"
+        f"#LOWPROMOTED\n"
         f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
         f"<b>User:</b> {mention_html(user_member.user.id, user_member.user.first_name)}"
     )
@@ -257,7 +347,7 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
 
     if (
         not (promoter.can_promote_members or promoter.status == "creator")
-        and user.id not in DRAGONS
+        and user.id not in DEV_USERS
     ):
         message.reply_text("You don't have the necessary rights to do that!")
         return
@@ -309,12 +399,13 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
 
     keyboard = InlineKeyboardMarkup([[
         InlineKeyboardButton(
-            "Demote", callback_data="demote_({})".format(user_member.user.id))
+            "Demote", callback_data="demote_komi({})".format(user_member.user.id))
     ]])
 
     bot.sendMessage(
         chat.id,
         f"Fullpromoting a user in <b>{chat.title}</b>\n\n<b>User: {mention_html(user_member.user.id, user_member.user.first_name)}</b>\n<b>Promoter: {mention_html(user.id, user.first_name)}</b>",
+        reply_markup=keyboard,
         parse_mode=ParseMode.HTML,
     )
 
@@ -380,9 +471,18 @@ def demote(update: Update, context: CallbackContext) -> str:
             can_manage_voice_chats=False,
         )
 
+        keyboard = InlineKeyboardMarkup([[
+           InlineKeyboardButton(
+             "Promote", callback_data="promote_komi({})".format(user_member.user.id)),
+            InlineKeyboardButton(
+             "Fullpromote", callback_data="fullpromote_komi({})".format(user_member.user.id))
+        ]])
+        
+
         bot.sendMessage(
             chat.id,
             f"Sucessfully demoted a admins in <b>{chat.title}</b>\n\nAdmin: <b>{mention_html(user_member.user.id, user_member.user.first_name)}</b>\nDemoter: {mention_html(user.id, user.first_name)}",
+            reply_markup=keyboard,
             parse_mode=ParseMode.HTML,
         )
 
@@ -792,13 +892,13 @@ def button(update: Update, context: CallbackContext) -> str:
     query: Optional[CallbackQuery] = update.callback_query
     user: Optional[User] = update.effective_user
     bot: Optional[Bot] = context.bot
-    match = re.match(r"demote_\((.+?)\)", query.data)
+    match = re.match(r"demote_komi\((.+?)\)", query.data)
     if match:
         user_id = match.group(1)
         chat: Optional[Chat] = update.effective_chat
         member = chat.get_member(user_id)
         bot_member = chat.get_member(bot.id)
-        bot_permissions = promoteChatMember(
+        bot_permissions = bot.promoteChatMember(
             chat.id,
             user_id,
             can_change_info=bot_member.can_change_info,
@@ -829,7 +929,7 @@ def button(update: Update, context: CallbackContext) -> str:
         	    f"Admin {mention_html(user.id, user.first_name)} Demoted {mention_html(member.user.id, member.user.first_name)}!",
         	    parse_mode=ParseMode.HTML,
         	)
-        	query.answer("Demoted!")
+        	query.answer("Demoted Successfully!")
         	return (
                     f"<b>{html.escape(chat.title)}:</b>\n" 
                     f"#DEMOTE\n" 
@@ -841,10 +941,126 @@ def button(update: Update, context: CallbackContext) -> str:
             "This user is not promoted or has left the group!"
         )
         return ""
+    
+    
+@bot_admin
+@can_promote
+@user_admin
+@loggable
+def komi_promote(update: Update, context: CallbackContext) -> str:
+    query: Optional[CallbackQuery] = update.callback_query
+    user: Optional[User] = update.effective_user
+    bot: Optional[Bot] = context.bot
+    match = re.match(r"promote_komi\((.+?)\)", query.data)
+    if match:
+        user_id = match.group(1)
+        chat: Optional[Chat] = update.effective_chat
+        member = chat.get_member(user_id)
+        bot_member = chat.get_member(bot.id)
+        promoted = bot.promoteChatMember(
+            chat.id,
+            user_id,
+            can_change_info=bot_member.can_change_info,
+            can_post_messages=bot_member.can_post_messages,
+            can_edit_messages=bot_member.can_edit_messages,
+            can_delete_messages=bot_member.can_delete_messages,
+            can_invite_users=bot_member.can_invite_users,
+            can_promote_members=bot_member.can_promote_members,
+            can_restrict_members=bot_member.can_restrict_members,
+            can_pin_messages=bot_member.can_pin_messages,
+            can_manage_voice_chats=bot_member.can_manage_voice_chats,
+        )                
+        if promoted:
+          update.effective_message.edit_text(
+              f"Admin {mention_html(user.id, user.first_name)} Promoter {mention_html(member.user.id, member.user.first_name)}!",
+              parse_mode=ParseMode.HTML,
+          )
+          query.answer("Promote Successfully!")
+          return (
+                    f"<b>{html.escape(chat.title)}:</b>\n" 
+                    f"#PROMOTED\n" 
+                    f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+                    f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}"
+                )
+    else:
+        update.effective_message.edit_text(
+            "This user is not promoted or has left the group!"
+        )
+        return ""
+    
+@bot_admin
+@can_promote
+@user_admin
+@loggable
+def komi_fullpromote(update: Update, context: CallbackContext) -> str:
+    query: Optional[CallbackQuery] = update.callback_query
+    user: Optional[User] = update.effective_user
+    bot: Optional[Bot] = context.bot
+    match = re.match(r"fullpromote_komi\((.+?)\)", query.data)
+    if match:
+        user_id = match.group(1)
+        chat: Optional[Chat] = update.effective_chat
+        member = chat.get_member(user_id)
+        bot_member = chat.get_member(bot.id)
+        fullpromoted = bot.promoteChatMember(
+            chat.id,
+            user_id,
+            can_change_info=bot_member.can_change_info,
+            can_post_messages=bot_member.can_post_messages,
+            can_edit_messages=bot_member.can_edit_messages,
+            can_delete_messages=bot_member.can_delete_messages,
+            can_invite_users=bot_member.can_invite_users,
+            can_promote_members=bot_member.can_promote_members,
+            can_restrict_members=bot_member.can_restrict_members,
+            can_pin_messages=bot_member.can_pin_messages,
+            can_manage_voice_chats=bot_member.can_manage_voice_chats,
+        )                
+        if fullpromoted:
+          update.effective_message.edit_text(
+              f"Admin {mention_html(user.id, user.first_name)} Fullpromoter {mention_html(member.user.id, member.user.first_name)}!",
+              parse_mode=ParseMode.HTML,
+          )
+          query.answer("Fullpromote Successfully!")
+          return (
+                    f"<b>{html.escape(chat.title)}:</b>\n" 
+                    f"#PROMOTED\n" 
+                    f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+                    f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}"
+                )
+    else:
+        update.effective_message.edit_text(
+            "This user is not promoted or has left the group!"
+        )
+        return ""
 
   
-def helps(chat):
-    return gs(chat, "admin_help")
+__help__ = """
+*User Commands*:
+❂ /admins*:* list of admins in the chat
+❂ /pinned*:* to get the current pinned message.
+
+*The Following Commands are Admins only:* 
+❂ /pin*:* silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users
+❂ /unpin*:* unpins the currently pinned message
+❂ /invitelink*:* gets invitelink
+❂ /promote*:* promotes the user replied to
+❂ /fullpromote*:* promotes the user replied to with full rights
+❂ /demote*:* demotes the user replied to
+❂ /title <title here>*:* sets a custom title for an admin that the bot promoted
+❂ /admincache*:* force refresh the admins list
+❂ /del*:* deletes the message you replied to
+❂ /purge*:* deletes all messages between this and the replied to message.
+❂ /purge <integer X>*:* deletes the replied message, and X messages following it if replied to a message.
+❂ /setgtitle <text>*:* set group title
+❂ /setgpic*:* reply to an image to set as group photo
+❂ /setdesc*:* Set group description
+❂ /setsticker*:* Set group sticker
+
+*Rules*:
+❂ /rules*:* get the rules for this chat.
+❂ /setrules <your rules here>*:* set the rules for this chat.
+❂ /clearrules*:* clear the rules for this chat.
+"""
 
 SET_DESC_HANDLER = CommandHandler("setdesc", set_desc, filters=Filters.chat_type.groups, run_async=True)
 SET_STICKER_HANDLER = CommandHandler("setsticker", set_sticker, filters=Filters.chat_type.groups, run_async=True)
@@ -856,13 +1072,17 @@ ADMINLIST_HANDLER = DisableAbleCommandHandler("admins", adminlist, run_async=Tru
 
 PIN_HANDLER = CommandHandler("pin", pin, filters=Filters.chat_type.groups, run_async=True)
 UNPIN_HANDLER = CommandHandler("unpin", unpin, filters=Filters.chat_type.groups, run_async=True)
+DEMOTE_KOMI_HANDLER = CallbackQueryHandler(button, pattern=r"demote_komi", run_async=True)
+FULLPROMOTE_KOMI_HANDLER = CallbackQueryHandler(komi_fullpromote, pattern=r"fullpromote_komi", run_async=True)
 PINNED_HANDLER = CommandHandler("pinned", pinned, filters=Filters.chat_type.groups, run_async=True)
 
 INVITE_HANDLER = DisableAbleCommandHandler("invitelink", invite, run_async=True)
 
 PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote, run_async=True)
 FULLPROMOTE_HANDLER = DisableAbleCommandHandler("fullpromote", fullpromote, run_async=True)
+LOW_PROMOTE_HANDLER = DisableAbleCommandHandler("lowpromote", lowpromote, run_async=True)
 DEMOTE_HANDLER = DisableAbleCommandHandler("demote", demote, run_async=True)
+PROMOTE_KOMI_HANDLER = CallbackQueryHandler(komi_promote, pattern=r"promote_komi", run_async=True)
 
 SET_TITLE_HANDLER = CommandHandler("title", set_title, run_async=True)
 ADMIN_REFRESH_HANDLER = CommandHandler("admincache", refresh_admin, filters=Filters.chat_type.groups, run_async=True)
@@ -876,9 +1096,13 @@ dispatcher.add_handler(ADMINLIST_HANDLER)
 dispatcher.add_handler(PIN_HANDLER)
 dispatcher.add_handler(UNPIN_HANDLER)
 dispatcher.add_handler(PINNED_HANDLER)
+dispatcher.add_handler(DEMOTE_KOMI_HANDLER)
+dispatcher.add_handler(PROMOTE_KOMI_HANDLER)
+dispatcher.add_handler(FULLPROMOTE_KOMI_HANDLER)
 dispatcher.add_handler(INVITE_HANDLER)
 dispatcher.add_handler(PROMOTE_HANDLER)
 dispatcher.add_handler(FULLPROMOTE_HANDLER)
+dispatcher.add_handler(LOW_PROMOTE_HANDLER)
 dispatcher.add_handler(DEMOTE_HANDLER)
 dispatcher.add_handler(SET_TITLE_HANDLER)
 dispatcher.add_handler(ADMIN_REFRESH_HANDLER)
@@ -909,9 +1133,13 @@ __handlers__ = [
     PIN_HANDLER,
     UNPIN_HANDLER,
     PINNED_HANDLER,
+    DEMOTE_KOMI_HANDLER,
+    PROMOTE_KOMI_HANDLER,
+    FULLPROMOTE_KOMI_HANDLER,    
     INVITE_HANDLER,
     PROMOTE_HANDLER,
     FULLPROMOTE_HANDLER,
+    LOW_PROMOTE_HANDLER,
     DEMOTE_HANDLER,
     SET_TITLE_HANDLER,
     ADMIN_REFRESH_HANDLER,
