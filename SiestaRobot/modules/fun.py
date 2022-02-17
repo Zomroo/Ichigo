@@ -375,7 +375,7 @@ def abuse(update, context):
 def goodnight(update, context):
     message = update.effective_message
     first_name = update.effective_user.first_name
-    reply = f"Good Night! {escape_markdown(first_name)}" 
+    reply = f"Oyasumi! {escape_markdown(first_name)}" 
     message.reply_text(reply, parse_mode=ParseMode.MARKDOWN)
 
 
@@ -383,7 +383,7 @@ def goodnight(update, context):
 def goodmorning(update, context):
     message = update.effective_message
     first_name = update.effective_user.first_name
-    reply = f"Good Morning! {escape_markdown(first_name)}"
+    reply = f"ohayo! {escape_markdown(first_name)}"
     message.reply_text(reply, parse_mode=ParseMode.MARKDOWN)
 
 
