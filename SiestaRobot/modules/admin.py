@@ -344,7 +344,7 @@ def demote(update: Update, context: CallbackContext) -> str:
     user_id = extract_user(message, args)
     if not user_id:
         message.reply_text(
-            "You don't seem to be referring to a user or the ID specified is incorrect..",
+            "You don't seem to be referring to a user or the ID specified is incorrect.."
         )
         return
 
@@ -353,16 +353,18 @@ def demote(update: Update, context: CallbackContext) -> str:
     except:
         return
 
-    if user_member.status == "creator":
-        message.reply_text("This person CREATED the chat, how would I demote them?")
+    if user_member.status == 'creator':
+        message.reply_text(
+            "This person CREATED the chat, how would I demote them?")
         return
 
-    if not user_member.status == "administrator":
+    if not user_member.status == 'administrator':
         message.reply_text("Can't demote what wasn't promoted!")
         return
 
     if user_id == bot.id:
-        message.reply_text("I can't demote myself! Get an admin to do it for me.")
+        message.reply_text(
+            "I can't demote myself! Get an admin to do it for me.")
         return
 
     try:
@@ -376,15 +378,12 @@ def demote(update: Update, context: CallbackContext) -> str:
             can_invite_users=False,
             can_restrict_members=False,
             can_pin_messages=False,
-            can_promote_members=False,
-            can_manage_voice_chats=False,
-        )
+            can_promote_members=False)
 
         bot.sendMessage(
             chat.id,
-            f"Sucessfully demoted a admins in <b>{chat.title}</b>\n\nAdmin: <b>{mention_html(user_member.user.id, user_member.user.first_name)}</b>\nDemoter: {mention_html(user.id, user.first_name)}",
-            parse_mode=ParseMode.HTML,
-        )
+            f"Sucessfully demoted <b>{user_member.user.first_name or user_id}</b>!",
+            parse_mode=ParseMode.HTML)
 
         log_message = (
             f"<b>{html.escape(chat.title)}:</b>\n"
@@ -397,9 +396,9 @@ def demote(update: Update, context: CallbackContext) -> str:
     except BadRequest:
         message.reply_text(
             "Could not demote. I might not be admin, or the admin status was appointed by another"
-            " user, so I can't act upon them!",
-        )
+            " user, so I can't act upon them!")
         return
+
 
 
 @user_admin
