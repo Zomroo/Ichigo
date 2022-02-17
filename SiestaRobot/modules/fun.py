@@ -379,6 +379,14 @@ def goodnight(update, context):
     message.reply_text(reply, parse_mode=ParseMode.MARKDOWN)
 
 
+@typing_action
+def goodmorning(update, context):
+    message = update.effective_message
+    first_name = update.effective_user.first_name
+    reply = f"Good Morning! {escape_markdown(first_name)}"
+    message.reply_text(reply, parse_mode=ParseMode.MARKDOWN)
+
+
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize, run_async=True)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs, run_async=True)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap, run_async=True)
@@ -399,6 +407,7 @@ ABUSE_HANDLER = DisableAbleCommandHandler("abuse", abuse, pass_args=True, run_as
 GDNIGHT_HANDLER = DisableAbleMessageHandler(
     Filters.regex(r"(?i)(goodnight|good night)"), goodnight, friendly="goodnight", run_async=True
 )
+GDMORNING_HANDLER = DisableAbleMessageHandler(Filters.regex(r"(?i)(goodmorning|good morning)"), goodmorning, friendly="goodmorning", run_async=True)
 
 dispatcher.add_handler(WEEBIFY_HANDLER)
 dispatcher.add_handler(SHOUT_HANDLER)
@@ -418,6 +427,7 @@ dispatcher.add_handler(GBAM_HANDLER)
 dispatcher.add_handler(FLIRT_HANDLER)
 dispatcher.add_handler(ABUSE_HANDLER)
 dispatcher.add_handler(GDNIGHT_HANDLER)
+dispatcher.add_handler(GDMORNING_HANDLER)
 
 __mod_name__ = "Fun"
 __command_list__ = [
@@ -459,4 +469,5 @@ __handlers__ = [
     FLIRT_HANDLER,
     ABUSE_HANDLER,
     GDNIGHT_HANDLER,
+    GDMORNING_HANDLER,
 ]
