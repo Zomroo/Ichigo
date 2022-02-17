@@ -560,7 +560,7 @@ SUPPORTLIST_HANDLER = CommandHandler(
     ["Caretaker", "cts"], supportlist, run_async=True
 )
 SUDOLIST_HANDLER = CommandHandler(["senpai", "senpais"], sudolist, run_async=True)
-DEVLIST_HANDLER = CommandHandler(["onichan", "baka"], devlist, run_async=True)
+DEVLIST_HANDLER = CommandHandler(["onichan", "oc"], devlist, run_async=True)
 
 dispatcher.add_handler(SUDO_HANDLER)
 dispatcher.add_handler(SUPPORT_HANDLER)
