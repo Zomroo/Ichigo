@@ -454,27 +454,16 @@ def set_about_me(update: Update, context: CallbackContext):
 @sudo_plus
 def stats(update, context):
     uptime = datetime.datetime.fromtimestamp(boot_time()).strftime("%Y-%m-%d %H:%M:%S")
-    status = "*╒═══「 System Statistics 」*\n\n"
-    status += "*➢ System Start time:* " + str(uptime) + "\n"
-    uname = platform.uname()
-    status += "*➢ System:* " + str(uname.system) + "\n"
-    status += "*➢ Node name:* " + escape_markdown(str(uname.node)) + "\n"
-    status += "*➢ Release:* " + escape_markdown(str(uname.release)) + "\n"
-    status += "*➢ Machine:* " + escape_markdown(str(uname.machine)) + "\n"
-    mem = virtual_memory()
-    cpu = cpu_percent()
-    disk = disk_usage("/")
-    status += "*➢ CPU:* " + str(cpu) + " %\n"
-    status += "*➢ RAM:* " + str(mem[2]) + " %\n"
-    status += "*➢ Storage:* " + str(disk[3]) + " %\n\n"
+    status = "*╒═══「 System statistics 」*\n\n"
     status += "*➢ Python Version:* " + python_version() + "\n"
+    status += "*➢ Uptime:* " + get_readable_time((time.time()-StartTime)) + "\n"
     try:
         update.effective_message.reply_text(
             status
             + "\n*Bot statistics*:\n"
             + "\n".join([mod.__stats__() for mod in STATS])
-            + f"\n\n✦ [Support](https://t.me/ichigosupportchat) | ✦ [Updates](https://t.me/ichigosupportchat)\n\n"
-            + "╘══「 Powered By [ichigo](https://t.me/ichigoxsinbot) | [Network](https://t.me/theacademy_official) 」\n",
+            + f"\n\n[✦ Support](https://t.me/{SUPPORT_CHAT}) | [✦ Updates](https://t.me/ichigoxupdates)\n\n"
+            + "╘══「 by [haruki](https://t.me/baby_hoii) 」\n",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
         )
@@ -483,12 +472,12 @@ def stats(update, context):
             (
                 (
                     (
-                        "\n*Bot Statistics*:\n"
+                        "\n*Bot statistics*:\n"
                         + "\n".join(mod.__stats__() for mod in STATS)
                     )
-                    + f"\n\n✦ [Support](https://t.me/ichigosupportchat) | ✦ [Updates](http://t.me/Sakuraxsupport)\n\n"
+                    + f"\n\n✦ [Support](https://t.me/{SUPPORT_CHAT}) | ✦ [Updates](https://t.me/ichigoxupdates)\n\n"
                 )
-                + "╘══「 Powered By [ichigo](https://t.me/ichigoxsinbot) | [Network](http://t.me/theacademy_official)」\n"
+                + "╘══「 by [haruki](https://t.me/baby_hoii) 」\n"
             ),
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
