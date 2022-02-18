@@ -153,7 +153,7 @@ def addsupport(
         json.dump(data, outfile, indent=4)
 
     update.effective_message.reply_text(
-        rt + f"\n{user_member.first_name} was added to my friends!",
+        rt + f"\n{user_member.first_name} was added to my caretakers!",
     )
 
     log_message = (
