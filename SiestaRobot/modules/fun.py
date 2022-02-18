@@ -405,7 +405,7 @@ GBAM_HANDLER = DisableAbleCommandHandler("gbam", gbam, run_async=True)
 FLIRT_HANDLER = DisableAbleCommandHandler("flirt", flirt, run_async=True)
 ABUSE_HANDLER = DisableAbleCommandHandler("abuse", abuse, pass_args=True, run_async=True)
 GDNIGHT_HANDLER = DisableAbleMessageHandler(
-    Filters.regex(r"(?i)(goodnight|good night)"), goodnight, friendly="goodnight", run_async=True
+    Filters.regex(r"(?i)(goodnight|goodnight)"), goodnight, friendly="goodnight", run_async=True
 )
 GDMORNING_HANDLER = DisableAbleMessageHandler(Filters.regex(r"(?i)(goodmorning|good morning)"), goodmorning, friendly="goodmorning", run_async=True)
 
