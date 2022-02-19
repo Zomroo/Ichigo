@@ -164,14 +164,14 @@ def gban(update: Update, context: CallbackContext):
         return
 
     komiuser = bot.get_chat(user_id)     
-    KOMIGBAN = """shinu Kuso yarō {} , U take a fight with {}  """
-    IZANA = "https://te.legra.ph/file/db140054edcc54f2f689a.mp4"
+    KOMIGBAN = """Anata wa gaki o yatta {} , how dare you, mess with {} san, now turn into ashes! """
+    IZANA = "https://telegra.ph/file/611260ab6a49071af1d69.mp4"
     first_name = update.effective_user.first_name
     message.reply_video(IZANA , caption=KOMIGBAN.format(escape_markdown(komiuser.first_name),escape_markdown(first_name)),
     reply_markup=InlineKeyboardMarkup(
                 [
              [
-                InlineKeyboardButton(text="Request to reborn", url="https://t.me/Izanasupport"),
+                InlineKeyboardButton(text="× request pardon ×", url="https://t.me/ichigosupportchat"),
              ],
           ]
 
