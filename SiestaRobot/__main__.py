@@ -226,7 +226,7 @@ def start(update: Update, context: CallbackContext):
                 disable_web_page_preview=False,
             )
     else:
-        KOMISTART = "https://telegra.ph/file/2d9cd1575e291867bbf6c.mp4"
+        KOMISTART = "https://telegra.ph/file/9353f6fdc8c7f9fa7d8a1.png"
         first_name = update.effective_user.first_name
         update.effective_message.reply_video(
            KOMISTART, caption= "<b>𝙺𝚘𝚗'𝚗𝚒𝚌𝚑𝚒𝚠𝚊 {} 𝚋𝚊𝚔𝚊, 𝙸'𝚖 𝚒𝚌𝚑𝚒𝚐𝚘!!. 𝙷𝚘𝚠 𝚊𝚛𝚎 𝚢𝚘𝚞  ?\n will you be my friend ? \n𝙰𝚕𝚒𝚟𝚎 𝚜𝚒𝚗𝚌𝚎 since</b>: <code>{}</code>".format(
