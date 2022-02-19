@@ -3,7 +3,7 @@ import time
 from datetime import datetime
 from io import BytesIO
 
-from telegram import ParseMode, Update
+from telegram import ParseMode, Update , InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.error import BadRequest, TelegramError, Unauthorized
 from telegram.ext import (
     CallbackContext,
@@ -11,7 +11,7 @@ from telegram.ext import (
     Filters,
     MessageHandler,
 )
-from telegram.utils.helpers import mention_html
+from telegram.utils.helpers import mention_html  , escape_markdown
 
 import SiestaRobot.modules.sql.global_bans_sql as sql
 from SiestaRobot.modules.sql.users_sql import get_user_com_chats
@@ -39,7 +39,6 @@ from SiestaRobot.modules.helper_funcs.extraction import (
     extract_user_and_text,
 )
 from SiestaRobot.modules.helper_funcs.misc import send_to_list
-from SiestaRobot.modules.language import gs
 
 GBAN_ENFORCE_GROUP = 6
 
@@ -90,13 +89,13 @@ def gban(update: Update, context: CallbackContext):
 
     if int(user_id) in DEV_USERS:
         message.reply_text(
-            "That user is part of the Association\nI can't act against our own.",
+            "𝐰𝐡𝐨 𝐭𝐡𝐢𝐬 𝐟𝐮𝐜𝐤𝐞𝐫 𝐭𝐞𝐥𝐥𝐢𝐧𝐠 𝐦𝐞 𝐰𝐡𝐚𝐭 𝐭𝐨 𝐝𝐨!! 𝐀𝐚𝐚...!!.",
         )
         return
 
     if int(user_id) in DRAGONS:
         message.reply_text(
-            "I spy, with my little eye... a disaster! Why are you guys turning on each other?",
+            "",
         )
         return
 
@@ -164,7 +163,22 @@ def gban(update: Update, context: CallbackContext):
 
         return
 
-    message.reply_text("On it!")
+    komiuser = bot.get_chat(user_id)     
+    KOMIGBAN = """shinu Kuso yarō {} , U take a fight with {}  """
+    IZANA = "https://te.legra.ph/file/db140054edcc54f2f689a.mp4"
+    first_name = update.effective_user.first_name
+    message.reply_video(IZANA , caption=KOMIGBAN.format(escape_markdown(komiuser.first_name),escape_markdown(first_name)),
+    reply_markup=InlineKeyboardMarkup(
+                [
+             [
+                InlineKeyboardButton(text="Request to reborn", url="https://t.me/Izanasupport"),
+             ],
+          ]
+
+        ),          
+
+    parse_mode=ParseMode.MARKDOWN
+                        )
 
     start_time = time.time()
     datetime_fmt = "%Y-%m-%dT%H:%M"
@@ -538,8 +552,18 @@ def __chat_settings__(chat_id, user_id):
     return f"This chat is enforcing *gbans*: `{sql.does_chat_gban(chat_id)}`."
 
 
-def helps(chat):
-    return gs(chat, "antispam_help")
+__help__ = f"""
+*Admins only:*
+❂ `/antispam <on/off/yes/no>`*:* Will toggle our antispam tech or return your current settings.
+Anti-Spam, used by bot devs to ban spammers across all groups. This helps protect \
+you and your groups by removing spam flooders as quickly as possible.
+*Note:* Users can appeal gbans or report spammers at @{SUPPORT_CHAT}
+This also integrates @Spamwatch API to remove Spammers as much as possible from your chatroom!
+*What is SpamWatch?*
+SpamWatch maintains a large constantly updated ban-list of spambots, trolls, bitcoin spammers and unsavoury characters[.](https://telegra.ph/file/f584b643c6f4be0b1de53.jpg)
+Constantly help banning spammers off from your group automatically So, you wont have to worry about spammers storming your group.
+*Note:* Users can appeal spamwatch bans at @SpamwatchSupport
+"""
 
 GBAN_HANDLER = CommandHandler("gban", gban, run_async=True)
 UNGBAN_HANDLER = CommandHandler("ungban", ungban, run_async=True)
