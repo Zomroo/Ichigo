@@ -78,7 +78,7 @@ buttons = [
     [
         InlineKeyboardButton(
             "Support Group",
-            "https://t.me/JibrilSupport",
+            "https://t.me/NexusXsupport",
         ),
         InlineKeyboardButton(
             "updates",
@@ -121,7 +121,7 @@ And the following:
     "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n",
 )
 
-ZEROTWO_IMG = "https://telegra.ph/file/3a09ae55283b69f3da197.jpg"
+ZEROTWO_IMG = "https://telegra.ru.com/p/3d417afcxd2616d869f43db58d22138bf885ea9d12b454717"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
  You can support the project by contacting @joker_hacker_6521 \
