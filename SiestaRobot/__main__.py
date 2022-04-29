@@ -78,17 +78,17 @@ buttons = [
     [
         InlineKeyboardButton(
             "Support Group",
-            "https://t.me/blackbulls_support",
+            "https://t.me/JibrilSupport",
         ),
         InlineKeyboardButton(
-            "Announcemnets",
-            "https://t.me/blackbull_bots"
+            "updates",
+            "https://t.me/JibrilUpdated"
         ),
     ],
     [
         InlineKeyboardButton(
-            text="Source Code",
-            url="https://github.com/Black-Bulls-Bots/zerotwobot"
+            text="Owner",
+            url="https://t.me/Husbandoo"
         )
     ]
 ]
@@ -103,7 +103,7 @@ Type /help to get available commands.
 
 HELP_STRINGS = """
 Hey there!.
-My Name is {}, from Darling in The FranXX. Take me as your group's darling to have fun with me. \
+My Name is {}, from Mushoku Tensei. Take me as your group's darling to have fun with me. \
 I can help you with the following commands.
 
 *Main* commands available:
