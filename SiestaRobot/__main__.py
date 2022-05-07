@@ -4,7 +4,7 @@ import re
 from sys import argv
 from typing import Optional
 
-from SiestaRobot import (
+from Ichigo San ♡ import (
     ALLOW_EXCL,
     CERT_PATH,
     DONATION_LINK,
@@ -22,9 +22,9 @@ from SiestaRobot import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from SiestaRobot.modules import ALL_MODULES
-from SiestaRobot.modules.helper_funcs.chat_status import is_user_admin
-from SiestaRobot.modules.helper_funcs.misc import paginate_modules
+from IchigoProXBot.modules import ALL_MODULES
+from IchigoProXBot.modules.helper_funcs.chat_status import is_user_admin
+from IchigoProXBot.modules.helper_funcs.misc import paginate_modules
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import (
     BadRequest,
@@ -82,7 +82,7 @@ buttons = [
         ),
         InlineKeyboardButton(
             "updates",
-            "https://t.me/JibrilUpdated"
+            "https://t.me/TeamNexusX",
         ),
     ],
     [
@@ -103,7 +103,7 @@ Type /help to get available commands.
 
 HELP_STRINGS = """
 Hey there!.
-My Name is {}, from Mushoku Tensei. Take me as your group's darling to have fun with me. \
+My Name is {}, from Darling In The Franxx. Take me as your group's darling to have fun with me. \
 I can help you with the following commands.
 
 *Main* commands available:
@@ -121,7 +121,7 @@ And the following:
     "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n",
 )
 
-ZEROTWO_IMG = "https://telegra.ru.com/p/3d417afcxd2616d869f43db58d22138bf885ea9d12b454717"
+ICHIGO_IMG = "https://telegra.ru.com/p/3d417afcxd2616d869f43db58d22138bf885ea9d12b454717"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
  You can support the project by contacting @joker_hacker_6521 \
