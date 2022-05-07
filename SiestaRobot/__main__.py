@@ -82,7 +82,7 @@ buttons = [
         ),
         InlineKeyboardButton(
             "updates",
-            "https://t.me/TeamNexusX",
+            "https://t.me/IchigoXupdates",
         ),
     ],
     [
@@ -121,10 +121,10 @@ And the following:
     "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n",
 )
 
-ICHIGO_IMG = "https://telegra.ru.com/p/3d417afcxd2616d869f43db58d22138bf885ea9d12b454717"
+ICHIGO_IMG = "https://te.legra.ph/file/ce34b546227e29f83bac4.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project by contacting @joker_hacker_6521 \
+ You can support the project by contacting @Husbandoo \
  Supporting isnt always financial! \
  Those who cannot provide monetary support are welcome to help us develop the bot at @jokers_botsupport."""
 
@@ -139,7 +139,7 @@ CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("zerotwobot.modules." + module_name)
+    imported_module = importlib.import_module("ichigoproxbot.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
@@ -245,11 +245,11 @@ def start(update: Update, context: CallbackContext):
                     [
                         InlineKeyboardButton(
                             text="Support",
-                            url="https://t.me/blackbulls_support",
+                            url="https://t.me/nexusxsupport",
                         ),
                         InlineKeyboardButton(
                             text=str("Announcement's"),
-                            url="https://t.me/blackbull_bots",
+                            url="https://t.me/teamnexusx",
                         ),
                     ],
                 ],
