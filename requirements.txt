@@ -5,8 +5,8 @@ wget
 gtts
 beautifulsoup4
 requests
-python-telegram-bot==13.10.0
-SQLAlchemy==1.4.29
+python-telegram-bot==13.11
+SQLAlchemy
 psycopg2-binary
 feedparser
 faker
@@ -25,8 +25,8 @@ Pillow
 CurrencyConverter
 google_images_download
 google-api-python-client
-googletrans==4.0.0-rc1
-google-trans-new==1.1.9
+googletrans
+google-trans-new
 jikanpy
 speedtest-cli
 coffeehouse
@@ -45,10 +45,10 @@ ujson
 pretty_errors
 pygithub
 TgCrypto
-Pyrogram
+pyrogram==1.4.16
 PyDictionary
 git+https://github.com/Sorrybabe/downloader
-youtube_search_python==1.4.9
+youtube_search_python
 youtube_search
 lyrics_extractor
 asyncio
@@ -86,7 +86,4 @@ pendulum
 fuzzysearch
 img2pdf
 multicolorcaptcha
-git+https://github.com/python-telegram-bot/ptbcontrib.git
-git+https://github.com/TotallyNotChase/glitch-this.git
-pyYAML>=5.1.2
-
+ptbcontrib @ git+https://github.com/python-telegram-bot/ptbcontrib.git@907070d129b7cf80b0236d72fb498667b5b22b63
