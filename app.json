@@ -132,8 +132,9 @@
          "value": ""
      },
         "ARQ_API": {
-            "description": "Get this from @ARQRobot.",
-            "required": true
+         "description": "Get this from @ARQRobot.",
+         "required": true
+         "value":""     
         },
 
       "SPAMWATCH_API": {
