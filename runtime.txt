@@ -1,4 +1,2 @@
-#ye toh dekh leta ek baar chutiye
-
 python-3.10.4
 
