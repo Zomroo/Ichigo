@@ -31,27 +31,27 @@
       "TOKEN": {
          "description": "Your bot token. Get one from @BotFather duh",
          "required": true,
-         "value": "5233700082:AAHAERdUCppckq9Tvo4P5x30Zy4p5MKj-OM"
+         "value": ""
       },
       "API_ID": {
          "description": "Get API_ID from my.telegram.org, used for telethon based modules.",
          "required": true,
-         "value": "19733238"
+         "value": ""
       },
       "API_HASH": {
          "description": "Get API_HASH from my.telegram.org, used for telethon based modules.",
          "required": true,
-         "value": "fe955e75a36ec386ae9ded33061fbd98"
+         "value": ""
       },    
       "SQLALCHEMY_DATABASE_URI": {
          "description": "Your postgres sql db, empty this field if you dont have one.",
          "required": false,
-         "value": "postgres://btzfrfoz:V4w59Z9Mi-QR2lUh9sbxh6Wuu74UmeFr@heffalump.db.elephantsql.com/btzfrfoz"
+         "value": "sqldbtype://username:pw@hostname:port/db_name"
       },      
       "OWNER_ID": {
          "description": "Your user ID as an integer.",
          "required": true,
-         "value": "5148561602"
+         "value": "5212572918"
      },
 
       "STRING_SESSION": {
@@ -61,7 +61,7 @@
       },
       "HEROKU_API_KEY": {
         "description": "Your Heroku API key, get it from 'https://dashboard.heroku.com/account'",
-        "value": "fda1e427-fdbc-478f-9c70-90083861e3df"
+        "value": ""
       },
       "HEROKU_APP_NAME": {
         "description": "Enter the Heroku app name here (Must an exact same name with your input above).",
@@ -69,17 +69,17 @@
       },
       "BOT_USERNAME": {
          "description": "username of your bot without the @",
-         "value": "ichigoproxbot"
+         "value": "ichigoxsinbot"
       },
 
       "BOT_ID": {
          "description": "to get your bot_id using other bot or userbot",
-         "value": "5233700082"
+         "value": ""
       },
 
       "OWNER_USERNAME": {
          "description": "Your username without the @",
-         "value": "Aceladi"
+         "value": "baby_hoii"
       },
       "SUPPORT_CHAT": {
          "description": "Your Telegram support group chat username where your users will go and bother you with shit But be like: MyGroupChatUsernameBlah. If this ever points to masha support than consider you made an enemy.",
@@ -89,7 +89,7 @@
       "MONGO_DB_URI": {
          "description": "Required for database connections.",
          "required": true,
-         "value": "mongodb+srv://eris:eris@cluster0.2nmfn.mongodb.net/?retryWrites=true&w=majority"
+         "value": ""
       },
       "IBM_WATSON_CRED_URL": {
          "description": "This is required for the speech to text module. Get your USERNAME from https://console.bluemix.net/docs/services/speech-to-text/getting-started.html",
@@ -108,7 +108,7 @@
          "description": "A channel where bot will print who added it to what group, useful during debugging or spam handling.",
          "required": true,
          "value": "-1001180007354"
-      },      
+},      
       "CASH_API_KEY": {
          "description": "Required for currency converter. Get yours from https://www.alphavantage.co/support/#api-key",
          "required": true,
@@ -132,9 +132,8 @@
          "value": ""
      },
         "ARQ_API": {
-           "description": "Get this from @ARQRobot.",
-           "required": true
-             
+            "description": "Get this from @ARQRobot.",
+            "required": true
         },
 
       "SPAMWATCH_API": {
@@ -209,12 +208,11 @@
          "value": "True"
       },
         "ARQ_API": {
-         "description": "Get this from @ARQRobot.",
-         "required": true
-         "value":"XZSJBH-SFXHHX-BOCNKJ-XIAPTY-ARQ"  
+            "description": "Get this from @ARQRobot.",
+            "required": true
         },
       "BAN_STICKER": {
-         "description": "ID of the sticker you want to use when banning people.",
+"description": "ID of the sticker you want to use when banning people.",
          "required": false,
          "value": ""
       },
