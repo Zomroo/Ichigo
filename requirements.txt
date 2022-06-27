@@ -1,6 +1,6 @@
 aiohttp
 asyncio
-bleach==5.0.0
+bleach==5.0.1
 numpy
 img2pdf
 ffmpeg-python==0.2.0
