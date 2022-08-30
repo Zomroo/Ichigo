@@ -13,7 +13,7 @@ Pillow
 psutil
 psycopg2-binary
 telegraph==2.1.0
-Telethon==1.24.0
+Telethon==1.25.0
 wget
 nekos.py==1.1.0
 pyyaml
