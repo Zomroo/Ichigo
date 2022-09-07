@@ -30,7 +30,7 @@ beautifulsoup4==4.11.1
 better-profanity==0.7.0
 aiofiles==0.8.0
 search-engine-parser
-SQLAlchemy==1.4.36
+SQLAlchemy==1.4.41
 opencv-python-headless==4.5.5.64
 jikanpy==4.3.2
 emoji==1.7.0
