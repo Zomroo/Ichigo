@@ -33,7 +33,7 @@ search-engine-parser
 SQLAlchemy==1.4.36
 opencv-python-headless==4.5.5.64
 jikanpy==4.3.2
-emoji==1.7.0
+emoji==2.1.0
 markdown2==2.4.3
 wikipedia==1.4.0
 alphabet-detector==0.0.7
