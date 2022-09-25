@@ -21,7 +21,7 @@ python-arq
 pykeyboard==0.1.5
 pymongo==4.1.1
 pyparsing==3.0.9
-pyrate-limiter==2.8.1
+pyrate-limiter==2.8.2
 pretty_errors
 future==0.18.2
 fuzzysearch==0.7.3
