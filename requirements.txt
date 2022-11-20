@@ -25,7 +25,7 @@ pyrate-limiter==2.8.1
 pretty_errors
 future==0.18.2
 fuzzysearch==0.7.3
-fake-useragent==0.1.11
+fake-useragent==1.0.1
 beautifulsoup4==4.11.1
 better-profanity==0.7.0
 aiofiles==0.8.0
