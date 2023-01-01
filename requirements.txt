@@ -31,7 +31,7 @@ better-profanity==0.7.0
 aiofiles==0.8.0
 search-engine-parser
 SQLAlchemy==1.4.36
-opencv-python-headless==4.5.5.64
+opencv-python-headless==4.7.0.68
 jikanpy==4.3.2
 emoji==1.7.0
 markdown2==2.4.3
