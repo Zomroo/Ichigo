@@ -26,7 +26,7 @@ pretty_errors
 future==0.18.2
 fuzzysearch==0.7.3
 fake-useragent==0.1.11
-beautifulsoup4==4.11.1
+beautifulsoup4==4.11.2
 better-profanity==0.7.0
 aiofiles==0.8.0
 search-engine-parser
