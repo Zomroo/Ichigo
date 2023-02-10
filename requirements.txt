@@ -28,7 +28,7 @@ fuzzysearch==0.7.3
 fake-useragent==0.1.11
 beautifulsoup4==4.11.1
 better-profanity==0.7.0
-aiofiles==0.8.0
+aiofiles==23.1.0
 search-engine-parser
 SQLAlchemy==1.4.36
 opencv-python-headless==4.5.5.64
